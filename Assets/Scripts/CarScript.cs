@@ -9,7 +9,7 @@ public class CarScript : MonoBehaviour
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
     [SerializeField] float turnspeed;
-    [SerializeField] float gravity;
+    [SerializeField] float gravity = -9.81f;
     [SerializeField] float floatingHeight = 0.25f;
 
     [SerializeField] LayerMask groundLM;
@@ -26,10 +26,12 @@ public class CarScript : MonoBehaviour
         if (!Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
         {
 			Debug.Log("GRAVITY IS A HARNESS");
+            transform.position -= transform.up * gravity;
 		} 
         else
         {
             Debug.Log("Float On ground NOW!!!");
+            //transform.position = 
         }
 
         if (Input.GetKey(KeyCode.W))
