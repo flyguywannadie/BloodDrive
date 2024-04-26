@@ -12,6 +12,8 @@ public class CarScript : MonoBehaviour
     [SerializeField] float gravity;
     [SerializeField] float floatingHeight = 0.25f;
 
+    [SerializeField] LayerMask groundLM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class CarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Physics.Raycast(transform.position, -transform.up, out RaycastHit ray))
+        if (!Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
         {
 			Debug.Log("GRAVITY IS A HARNESS");
 		} 
