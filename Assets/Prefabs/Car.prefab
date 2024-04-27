@@ -5021,7 +5021,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5d667bb4f41eeac42a8065591436540b, type: 3}
   driftSparks: {fileID: 5511670343129455622}
   BloodAmount: 1
-  howLongToRunOutOfBlood: 50
+  howLongToRunOutOfBlood: 20
+  bloodGottenFromGiver: 0.15
+  attackRange: 3
 --- !u!1 &7001246311466695664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,7 +5163,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3.81, y: 3.69, z: 2.12}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3979163800792316474
 Rigidbody:
