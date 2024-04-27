@@ -24,6 +24,7 @@ public class CarScript : MonoBehaviour
     [SerializeField] Transform model; // the model of the car
 
     [SerializeField] LayerMask groundLM;
+    [SerializeField] LayerMask wallLM;
 
 	[SerializeField] Animator carAnimator;
 	[SerializeField] SpriteRenderer carSprite;
@@ -165,7 +166,27 @@ public class CarScript : MonoBehaviour
 
 	private void CheckSideCollisions()
 	{
+		if (Physics.Raycast(transform.position, transform.right, 0.5f, wallLM))
+		{
+			howIAmTurning = -MathF.Abs(howIAmTurning) - 25f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+		}
+		if (Physics.Raycast(transform.position, -transform.right, 0.5f, wallLM))
+		{
+			howIAmTurning = MathF.Abs(howIAmTurning) + 25f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+		}
+		if (Physics.Linecast(prevpos, transform.position, wallLM))
+		{
+			Debug.Log("YOU HAVE TO TURN");
+			Destroy(gameObject);
+		}
+	}
 
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawLine(transform.position, transform.position + ((transform.right * (howIAmTurning / 90)) + (transform.forward * speed.z)));
 	}
 
 	private void TurnCar()
