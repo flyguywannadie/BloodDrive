@@ -48,20 +48,8 @@ public class CarScript : MonoBehaviour
 				// Moving forward
 				transform.Translate(speed * Time.deltaTime, Space.Self);
 
-				if (speed.x != 0)
-				{
-					speed.z = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
-				}
-				else
-				{
-					//float change = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
-					//speed.z = 
-
-					//if (Mathf.)
-					//{
-
-					//}
-				}
+				speed.z = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
+				
 
 				if (Input.GetKey(KeyCode.W))
 				{
@@ -118,17 +106,22 @@ public class CarScript : MonoBehaviour
 				break;
             case eState.TOGROUND:
 				Debug.Log("Float On ground NOW!!!");
+				speed = new Vector3(speed.x, 0, speed.z);
 				float speed2 = speed.magnitude;
-				speed = speed.normalized;
-				speed = new Vector3(speed.x,0,speed.z);
-				speed *= speed2;
-				speed = Vector3.zero;
+				speed = new Vector3(0,0,speed2);
 				state = eState.GROUNDED;
 				break;
             case eState.INAIR:
 				Debug.Log("GRAVITY IS A HARNESS");
+
+				//speed.z = Mathf.Lerp(speed.z, 0, 1f * Time.deltaTime);
+				//speed.x = Mathf.Lerp(speed.x, 0, 1f * Time.deltaTime);
+
+				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.forward, Vector3.up), Time.deltaTime);
+
 				if (Physics.Raycast(transform.position, speed.normalized, out RaycastHit ray2, 1, groundLM))
 				{
+					transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
 					transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
 
 					// this works thank you google lol
@@ -143,7 +136,7 @@ public class CarScript : MonoBehaviour
 				transform.position += speed * Time.deltaTime;
 				break;
             case eState.TOINAIR:
-                float speedMagnitude = speed.magnitude;
+				float speedMagnitude = speed.magnitude;
                 speed = transform.position - prevpos;
                 speed = speed.normalized * speedMagnitude;
                 state = eState.INAIR;
@@ -157,6 +150,7 @@ public class CarScript : MonoBehaviour
 		{
 			if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
 			{
+				transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
 				transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
 
 				// this works thank you google lol
