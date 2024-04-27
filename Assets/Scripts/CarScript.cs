@@ -38,7 +38,11 @@ public class CarScript : MonoBehaviour
 	[SerializeField] float bloodGottenFromGiver = 0.15f;
 	[SerializeField] float attackRange = 10f;
 
-    Vector3 prevpos;
+	[Header("Audio")]
+	[SerializeField] AudioSource vehicleAudio;
+	[SerializeField] AudioSource driftAudio;
+
+	Vector3 prevpos;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +98,7 @@ public class CarScript : MonoBehaviour
 				if (Input.GetKey(KeyCode.LeftShift))
 				{
 					driftSparks.Play();
+					driftAudio.Play();
 				}
 				break;
             case eState.INAIR:
@@ -121,6 +126,7 @@ public class CarScript : MonoBehaviour
                 speed = speed.normalized * speedMagnitude;
                 state = eState.INAIR;
 				driftSparks.Stop();
+				driftAudio.Stop();
 				break;
         }
 
@@ -133,6 +139,8 @@ public class CarScript : MonoBehaviour
 		{
 			BloodAmount -= (1f/howLongToRunOutOfBlood) * Time.deltaTime;
 		}
+
+		vehicleAudio.pitch = speed.magnitude / 30;
 	}
 
 	private void LateUpdate()
@@ -248,6 +256,7 @@ public class CarScript : MonoBehaviour
 			maxturnAngle = originalMaxTurn;
 			maxSpeedBlood = originalMaxSpeed;
 			driftSparks.Stop();
+			driftAudio.Stop();
 		}
 
 		transform.Rotate(transform.up, howIAmTurning * Time.deltaTime, Space.World);
@@ -255,6 +264,7 @@ public class CarScript : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.LeftShift))
 		{
 			driftSparks.Play();
+			driftAudio.Play();
 			maxturnAngle *= 1.75f;
 		}
 
