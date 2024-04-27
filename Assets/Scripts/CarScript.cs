@@ -31,30 +31,37 @@ public class CarScript : MonoBehaviour
     void Start()
     {
         originalMaxTurn = maxturnAngle;   
-        originalMaxSpeed = maxSpeed;   
+        originalMaxSpeed = maxSpeed;
+		prevpos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+		Debug.Log(state.ToString());
+
         switch (state)
         {
             case eState.GROUNDED:
-				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
-				{
-					transform.position = ray.point + (ray.normal * floatingHeight * 0.9f);
-					transform.rotation = Quaternion.FromToRotation(transform.up, ray.normal) * transform.rotation;
-				} 
-				else
-				{
-					state = eState.TOINAIR;
-					return;
-				}
+				prevpos = transform.position;
 
 				// Moving forward
 				transform.Translate(speed * Time.deltaTime, Space.Self);
 
-				speed.z = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
+				if (speed.x != 0)
+				{
+					speed.z = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
+				}
+				else
+				{
+					//float change = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
+					//speed.z = 
+
+					//if (Mathf.)
+					//{
+
+					//}
+				}
 
 				if (Input.GetKey(KeyCode.W))
 				{
@@ -68,11 +75,16 @@ public class CarScript : MonoBehaviour
 				if (Input.GetKey(KeyCode.LeftShift))
 				{
 					maxSpeed *= 1 - (0.75f * Time.deltaTime);
+					if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+					{
+						howIAmTurning = Mathf.Lerp(howIAmTurning, 0, (turnspeed * (speed.z / maxSpeed)) * Time.deltaTime);
+					}
 				}
 				else
 				{
 					howIAmTurning = Mathf.Lerp(howIAmTurning, 0, (turnspeed * (speed.z / maxSpeed)) * Time.deltaTime);
 				}
+
 				if (Input.GetKeyUp(KeyCode.LeftShift))
 				{
 					maxturnAngle = originalMaxTurn;
@@ -92,36 +104,82 @@ public class CarScript : MonoBehaviour
 					howIAmTurning = Mathf.Lerp(howIAmTurning, maxturnAngle, turnspeed * Time.deltaTime);
 				}
 				model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
+
+				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
+				{
+					transform.position = ray.point + (ray.normal * floatingHeight * 0.9f);
+					transform.rotation = Quaternion.FromToRotation(transform.up, ray.normal) * transform.rotation;
+				}
+				else
+				{
+					state = eState.TOINAIR;
+					return;
+				}
 				break;
             case eState.TOGROUND:
 				Debug.Log("Float On ground NOW!!!");
+				float speed2 = speed.magnitude;
+				speed = speed.normalized;
+				speed = new Vector3(speed.x,0,speed.z);
+				speed *= speed2;
 				speed = Vector3.zero;
 				state = eState.GROUNDED;
 				break;
             case eState.INAIR:
 				Debug.Log("GRAVITY IS A HARNESS");
-				if (Physics.Raycast(transform.position, speed.normalized, out RaycastHit ray2, floatingHeight, groundLM))
+				if (Physics.Raycast(transform.position, speed.normalized, out RaycastHit ray2, 1, groundLM))
 				{
 					transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
 
 					// this works thank you google lol
 					//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
 					transform.rotation = Quaternion.FromToRotation(transform.up, ray2.normal) * transform.rotation;
+					prevpos = transform.position;
 					state = eState.TOGROUND;
 					return;
 				}
+				prevpos = transform.position;
 				speed.y += gravity * Time.deltaTime;
 				transform.position += speed * Time.deltaTime;
 				break;
             case eState.TOINAIR:
                 float speedMagnitude = speed.magnitude;
-                speed = prevpos - transform.position;
+                speed = transform.position - prevpos;
                 speed = speed.normalized * speedMagnitude;
                 state = eState.INAIR;
 				break;
         }
+	}
 
-		
+	private void LateUpdate()
+	{
+		if (state == eState.INAIR)
+		{
+			if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
+			{
+				transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
+
+				// this works thank you google lol
+				//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
+				transform.rotation = Quaternion.FromToRotation(transform.up, ray2.normal) * transform.rotation;
+				prevpos = transform.position;
+				state = eState.TOGROUND;
+				return;
+			}
+		}
+		if (state == eState.GROUNDED)
+		{
+			if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
+			{
+				transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
+
+				// this works thank you google lol
+				//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
+				transform.rotation = Quaternion.FromToRotation(transform.up, ray2.normal) * transform.rotation;
+				prevpos = transform.position;
+				return;
+			}
+		}
 	}
 
 	private void OnDrawGizmos()
