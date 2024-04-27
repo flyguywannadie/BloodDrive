@@ -95,8 +95,7 @@ public class CarScript : MonoBehaviour
 
 				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
 				{
-					transform.position = ray.point + (ray.normal * floatingHeight * 0.9f);
-					transform.rotation = Quaternion.FromToRotation(transform.up, ray.normal) * transform.rotation;
+					SnapToGround(ray);
 				}
 				else
 				{
@@ -121,13 +120,8 @@ public class CarScript : MonoBehaviour
 
 				if (Physics.Raycast(transform.position, speed.normalized, out RaycastHit ray2, 1, groundLM))
 				{
-					transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
-					transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
-
-					// this works thank you google lol
-					//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
-					transform.rotation = Quaternion.FromToRotation(transform.up, ray2.normal) * transform.rotation;
-					prevpos = transform.position;
+					transform.rotation = Quaternion.LookRotation(transform.forward, ray2.normal);
+					SnapToGround(ray2);
 					state = eState.TOGROUND;
 					return;
 				}
@@ -150,13 +144,8 @@ public class CarScript : MonoBehaviour
 		{
 			if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
 			{
-				transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
-				transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
-
-				// this works thank you google lol
-				//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
-				transform.rotation = Quaternion.FromToRotation(transform.up, ray2.normal) * transform.rotation;
-				prevpos = transform.position;
+				transform.rotation = Quaternion.LookRotation(transform.forward, ray2.normal);
+				SnapToGround(ray2);
 				state = eState.TOGROUND;
 				return;
 			}
@@ -165,15 +154,25 @@ public class CarScript : MonoBehaviour
 		{
 			if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
 			{
-				transform.position = ray2.point + (ray2.normal * floatingHeight * 0.9f);
-
-				// this works thank you google lol
-				//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
-				transform.rotation = Quaternion.FromToRotation(transform.up, ray2.normal) * transform.rotation;
-				prevpos = transform.position;
+				SnapToGround(ray2);
 				return;
 			}
 		}
+	}
+
+	private void SnapToGround(RaycastHit hit)
+	{
+		transform.position = hit.point + (hit.normal * floatingHeight * 0.9f);
+
+		// this works thank you google lol
+		//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
+		transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+		prevpos = transform.position;
+	}
+
+	private void SpintAttack()
+	{
+
 	}
 
 	private void OnDrawGizmos()
