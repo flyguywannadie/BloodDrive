@@ -177,16 +177,20 @@ public class CarScript : MonoBehaviour
 		{
 			howIAmTurning = -MathF.Abs(howIAmTurning) - 25f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			speed.z *= 0.8f;
 		}
 		if (Physics.Raycast(transform.position, -transform.right, 0.5f, wallLM))
 		{
 			howIAmTurning = MathF.Abs(howIAmTurning) + 25f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			speed.z *= 0.8f;
 		}
-		if (Physics.Linecast(prevpos, transform.position, wallLM))
+		if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
-			Destroy(gameObject);
+			//Destroy(gameObject);
+			transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+			speed.z *= 0.5f;
 		}
 	}
 
