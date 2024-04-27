@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class CarScript : MonoBehaviour
@@ -11,8 +10,9 @@ public class CarScript : MonoBehaviour
 
     [SerializeField] Vector3 speed; // how fast he car is currently moving
     [SerializeField] float acceleration = 5; // how fast the car accelerates, higher = more
-    [SerializeField] float maxSpeed = 25; // maximum speed of car
-    [SerializeField] float friction = 4; // higher the number the quicker it slows down
+    [SerializeField] float maxSpeedBlood = 25; // maximum speed of car
+    float maxSpeed = 0; // maximum speed of car
+    //[SerializeField] float friction = 4; // higher the number the quicker it slows down
     [SerializeField] float howIAmTurning = 0; // the angle the car turns at
     [SerializeField] float turnspeed = 5; // how fast the car turns
     [SerializeField] float maxturnAngle = 25; // maximum angle the car turns at
@@ -25,72 +25,44 @@ public class CarScript : MonoBehaviour
 
     [SerializeField] LayerMask groundLM;
 
+	[SerializeField] Animator carAnimator;
+	[SerializeField] SpriteRenderer carSprite;
+	[SerializeField] Sprite[] turningSprites;
+
+	[SerializeField, Range(0f, 1f)] float BloodAmount = 1f;
+
+	[SerializeField] float howLongToRunOutOfBlood = 20;
+
     Vector3 prevpos;
 
     // Start is called before the first frame update
     void Start()
     {
         originalMaxTurn = maxturnAngle;   
-        originalMaxSpeed = maxSpeed;
+        originalMaxSpeed = maxSpeedBlood;
 		prevpos = transform.position;
-    }
+		PlayIntro();
+
+	}
 
     // Update is called once per frame
     void Update()
     {
 		Debug.Log(state.ToString());
 
+		maxSpeed = maxSpeedBlood * BloodAmount;
+
         switch (state)
         {
             case eState.GROUNDED:
 				prevpos = transform.position;
 
-				// Moving forward
-				transform.Translate(speed * Time.deltaTime, Space.Self);
+				MoveCarForward();
 
-				speed.z = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
-				
+				CheckSideCollisions();
 
-				if (Input.GetKey(KeyCode.W))
-				{
-					if (speed.z < maxSpeed)
-					{
-						speed.z += acceleration * Time.deltaTime;
-					}
-				}
+				TurnCar();
 
-				// turning left and right
-				if (Input.GetKey(KeyCode.LeftShift))
-				{
-					maxSpeed *= 1 - (0.75f * Time.deltaTime);
-					if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-					{
-						howIAmTurning = Mathf.Lerp(howIAmTurning, 0, (turnspeed * (speed.z / maxSpeed)) * Time.deltaTime);
-					}
-				}
-				else
-				{
-					howIAmTurning = Mathf.Lerp(howIAmTurning, 0, (turnspeed * (speed.z / maxSpeed)) * Time.deltaTime);
-				}
-
-				if (Input.GetKeyUp(KeyCode.LeftShift))
-				{
-					maxturnAngle = originalMaxTurn;
-					maxSpeed = originalMaxSpeed;
-				}
-				transform.Rotate(transform.up, howIAmTurning * Time.deltaTime, Space.World);
-				if (Input.GetKeyDown(KeyCode.LeftShift))
-				{
-					maxturnAngle *= 1.75f;
-				}
-				if (Input.GetKey(KeyCode.A))
-				{
-					howIAmTurning = Mathf.Lerp(howIAmTurning, -maxturnAngle, turnspeed * Time.deltaTime);
-				}
-				if (Input.GetKey(KeyCode.D))
-				{
-					howIAmTurning = Mathf.Lerp(howIAmTurning, maxturnAngle, turnspeed * Time.deltaTime);
-				}
 				//model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
 
 				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
@@ -101,6 +73,11 @@ public class CarScript : MonoBehaviour
 				{
 					state = eState.TOINAIR;
 					return;
+				}
+
+				if (!carAnimator.isActiveAndEnabled && Input.GetKeyDown(KeyCode.Space))
+				{
+					SpintAttack();
 				}
 				break;
             case eState.TOGROUND:
@@ -136,6 +113,16 @@ public class CarScript : MonoBehaviour
                 state = eState.INAIR;
 				break;
         }
+
+		if (!carAnimator.isActiveAndEnabled)
+		{
+			SelectCarSprite();
+		}
+
+		if (BloodAmount > 0.25f)
+		{
+			BloodAmount -= (1f/howLongToRunOutOfBlood) * Time.deltaTime;
+		}
 	}
 
 	private void LateUpdate()
@@ -160,6 +147,91 @@ public class CarScript : MonoBehaviour
 		}
 	}
 
+	private void MoveCarForward()
+	{
+		// Moving forward
+		transform.Translate(speed * Time.deltaTime, Space.Self);
+
+		speed.z = Mathf.Lerp(speed.z, 0, ((speed.z / maxSpeed) / 2) * Time.deltaTime);
+
+		if (Input.GetKey(KeyCode.W))
+		{
+			if (speed.z < maxSpeed)
+			{
+				speed.z += acceleration * Time.deltaTime;
+			}
+		}
+	}
+
+	private void CheckSideCollisions()
+	{
+
+	}
+
+	private void TurnCar()
+	{
+
+		// turning left and right
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			maxSpeedBlood *= 1 - (0.75f * Time.deltaTime);
+			if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+			{
+				howIAmTurning = Mathf.Lerp(howIAmTurning, 0, (turnspeed * (speed.z / maxSpeed)) * Time.deltaTime);
+			}
+		}
+		else
+		{
+			howIAmTurning = Mathf.Lerp(howIAmTurning, 0, (turnspeed * (speed.z / maxSpeed)) * Time.deltaTime);
+		}
+
+		if (Input.GetKeyUp(KeyCode.LeftShift))
+		{
+			maxturnAngle = originalMaxTurn;
+			maxSpeedBlood = originalMaxSpeed;
+		}
+
+		transform.Rotate(transform.up, howIAmTurning * Time.deltaTime, Space.World);
+
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			maxturnAngle *= 1.75f;
+		}
+
+		if (Input.GetKey(KeyCode.A))
+		{
+			howIAmTurning = Mathf.Lerp(howIAmTurning, -maxturnAngle, turnspeed * Time.deltaTime);
+		}
+		if (Input.GetKey(KeyCode.D))
+		{
+			howIAmTurning = Mathf.Lerp(howIAmTurning, maxturnAngle, turnspeed * Time.deltaTime);
+		}
+	}
+
+	private void SelectCarSprite()
+	{
+		int spriteIndex = (int)(Mathf.Abs(howIAmTurning)/20);
+		if (spriteIndex > turningSprites.Length - 1)
+		{
+			spriteIndex = turningSprites.Length - 1;
+		}
+		Debug.Log(spriteIndex);
+		if (spriteIndex != 0)
+		{
+			if (howIAmTurning < 0)
+			{
+				carSprite.flipX = true;
+			}
+			else
+			{
+				carSprite.flipX = false;
+			}
+		}
+
+		carSprite.sprite = turningSprites[spriteIndex];
+		Debug.Log(turningSprites[spriteIndex].name);
+	}
+
 	private void SnapToGround(RaycastHit hit)
 	{
 		transform.position = hit.point + (hit.normal * floatingHeight * 0.9f);
@@ -172,11 +244,40 @@ public class CarScript : MonoBehaviour
 
 	private void SpintAttack()
 	{
-
+		carAnimator.enabled = true;
+		carAnimator.SetTrigger("Spin");
 	}
 
-	private void OnDrawGizmos()
+	private void PlayIntro()
 	{
-		Gizmos.DrawLine(transform.position, transform.position + speed.normalized * 5f);
+		carAnimator.enabled = true;
+		carAnimator.SetTrigger("DoIntro");
+	}
+
+	public float GetSpeed()
+	{
+		if (state == eState.GROUNDED)
+		{
+			return speed.z;
+		}
+		else
+		{
+			return speed.magnitude;
+		}
+	}
+
+	public float GetMaxSpeed()
+	{
+		return maxSpeedBlood;
+	}
+
+	public float GetMaxSpeedWithBlood()
+	{
+		return maxSpeedBlood * BloodAmount;
+	}
+
+	public float GetBloodAmount()
+	{
+		return BloodAmount;
 	}
 }

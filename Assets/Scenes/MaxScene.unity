@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 66813215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18, y: 682, z: -64}
+  m_LocalPosition: {x: -18, y: 619.15, z: -64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -174,7 +174,7 @@ MonoBehaviour:
   maxSpeed: 100
   friction: 0.25
   howIAmTurning: 0
-  turnspeed: 10
+  turnspeed: 12
   maxturnAngle: 55
   gravity: -9.81
   floatingHeight: 0.5
@@ -182,6 +182,14 @@ MonoBehaviour:
   groundLM:
     serializedVersion: 2
     m_Bits: 64
+  carAnimator: {fileID: 1752991648}
+  carSprite: {fileID: 1752991647}
+  turningSprites:
+  - {fileID: 21300000, guid: b4d6b571695de494d8dad56c34532db6, type: 3}
+  - {fileID: 21300000, guid: 427655e11c051f44dada58b58a29a24c, type: 3}
+  - {fileID: 21300000, guid: 21740e5e4181d204c90ac4a7ccc4b27d, type: 3}
+  - {fileID: 21300000, guid: 7b74028ffef7f234f9d3330074312da5, type: 3}
+  - {fileID: 21300000, guid: 5d667bb4f41eeac42a8065591436540b, type: 3}
 --- !u!1 &79749667
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,8 +460,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4293102, y: 1e-45, z: -1e-45, w: 0.9031571}
-  m_LocalPosition: {x: -18, y: 685, z: -66}
+  m_LocalRotation: {x: 0.21032275, y: 0.000000009733929, z: -0.000000002094108, w: 0.97763205}
+  m_LocalPosition: {x: -18, y: 623.15, z: -71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1116,7 +1124,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931810665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1247,12 +1255,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 3, z: -2}
-  m_XDamping: 0.5
-  m_YDamping: 0.5
+  m_FollowOffset: {x: 0, y: 4, z: -7}
+  m_XDamping: 0.2
+  m_YDamping: 0.2
   m_ZDamping: 0.2
   m_AngularDampingMode: 0
-  m_PitchDamping: 3
+  m_PitchDamping: 2.5
   m_YawDamping: 1
   m_RollDamping: 1
   m_AngularDamping: 1
@@ -6800,6 +6808,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1752991646}
   - component: {fileID: 1752991647}
+  - component: {fileID: 1752991648}
+  - component: {fileID: 1752991649}
   m_Layer: 7
   m_Name: player_front
   m_TagString: Untagged
@@ -6863,7 +6873,7 @@ SpriteRenderer:
   m_SortingLayerID: -140619403
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b4d6b571695de494d8dad56c34532db6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edaa45f52345f9244b350ee50d95c7f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6874,6 +6884,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1752991648
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752991645}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef380c12fa4d1db42a5e53eaece0ab19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1752991649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752991645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4378865802f09a149839d8c84e0118a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1792309874
 GameObject:
   m_ObjectHideFlags: 0
@@ -7075,8 +7118,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917775489}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4293102, y: 1e-45, z: -1e-45, w: 0.9031571}
-  m_LocalPosition: {x: -18, y: 685, z: -66}
+  m_LocalRotation: {x: 0.21032275, y: 0.000000009733929, z: -0.000000002094108, w: 0.97763205}
+  m_LocalPosition: {x: -18, y: 623.15, z: -71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
