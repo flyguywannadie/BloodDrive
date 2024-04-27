@@ -30,6 +30,8 @@ public class CarScript : MonoBehaviour
 	[SerializeField] SpriteRenderer carSprite;
 	[SerializeField] Sprite[] turningSprites;
 
+	[SerializeField] ParticleSystem driftSparks;
+
 	[SerializeField, Range(0f, 1f)] float BloodAmount = 1f;
 
 	[SerializeField] float howLongToRunOutOfBlood = 20;
@@ -87,6 +89,10 @@ public class CarScript : MonoBehaviour
 				float speed2 = speed.magnitude;
 				speed = new Vector3(0,0,speed2);
 				state = eState.GROUNDED;
+				if (Input.GetKey(KeyCode.LeftShift))
+				{
+					driftSparks.Play();
+				}
 				break;
             case eState.INAIR:
 				Debug.Log("GRAVITY IS A HARNESS");
@@ -112,6 +118,7 @@ public class CarScript : MonoBehaviour
                 speed = transform.position - prevpos;
                 speed = speed.normalized * speedMagnitude;
                 state = eState.INAIR;
+				driftSparks.Stop();
 				break;
         }
 
@@ -191,7 +198,6 @@ public class CarScript : MonoBehaviour
 
 	private void TurnCar()
 	{
-
 		// turning left and right
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
@@ -210,12 +216,14 @@ public class CarScript : MonoBehaviour
 		{
 			maxturnAngle = originalMaxTurn;
 			maxSpeedBlood = originalMaxSpeed;
+			driftSparks.Stop();
 		}
 
 		transform.Rotate(transform.up, howIAmTurning * Time.deltaTime, Space.World);
 
 		if (Input.GetKeyDown(KeyCode.LeftShift))
 		{
+			driftSparks.Play();
 			maxturnAngle *= 1.75f;
 		}
 
@@ -248,6 +256,8 @@ public class CarScript : MonoBehaviour
 				carSprite.flipX = false;
 			}
 		}
+
+		driftSparks.transform.localRotation = Quaternion.Euler(0, (spriteIndex * (-15 * Mathf.Sign(howIAmTurning))), 0);
 
 		carSprite.sprite = turningSprites[spriteIndex];
 		Debug.Log(turningSprites[spriteIndex].name);
