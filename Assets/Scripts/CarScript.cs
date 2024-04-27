@@ -91,7 +91,7 @@ public class CarScript : MonoBehaviour
 				{
 					howIAmTurning = Mathf.Lerp(howIAmTurning, maxturnAngle, turnspeed * Time.deltaTime);
 				}
-				model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
+				//model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
 
 				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
 				{
