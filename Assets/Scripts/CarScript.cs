@@ -35,6 +35,8 @@ public class CarScript : MonoBehaviour
 	[SerializeField, Range(0f, 1f)] float BloodAmount = 1f;
 
 	[SerializeField] float howLongToRunOutOfBlood = 20;
+	[SerializeField] float bloodGottenFromGiver = 0.15f;
+	[SerializeField] float attackRange = 10f;
 
     Vector3 prevpos;
 
@@ -171,20 +173,30 @@ public class CarScript : MonoBehaviour
 		}
 	}
 
+	public IEnumerator SpinAttackKill()
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			var hits = Physics.OverlapSphere(transform.position, attackRange);
+
+			foreach (var hit in hits)
+			{
+				if (hit.TryGetComponent<BloodGiver>(out BloodGiver bg))
+				{
+					bg.Killed();
+				}
+			}
+			yield return null;
+		}
+	}
+
+	public void AddBlood()
+	{
+		BloodAmount += bloodGottenFromGiver;
+	}
+
 	private void CheckSideCollisions()
 	{
-		if (Physics.Raycast(transform.position, transform.right, 0.5f, wallLM))
-		{
-			howIAmTurning = -MathF.Abs(howIAmTurning) - 25f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			speed.z *= 0.8f;
-		}
-		if (Physics.Raycast(transform.position, -transform.right, 0.5f, wallLM))
-		{
-			howIAmTurning = MathF.Abs(howIAmTurning) + 25f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			speed.z *= 0.8f;
-		}
 		if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
@@ -192,12 +204,27 @@ public class CarScript : MonoBehaviour
 			transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
 			speed.z *= 0.5f;
 		}
+		if (Physics.Raycast(transform.position, transform.right, out ray, 0.5f, wallLM))
+		{
+			howIAmTurning = -MathF.Abs(howIAmTurning) - 25f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			transform.position += ray.normal;
+			speed.z *= 0.8f;
+		} 
+		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
+		{
+			howIAmTurning = MathF.Abs(howIAmTurning) + 25f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			transform.position += ray.normal;
+			speed.z *= 0.8f;
+		}
 	}
 
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawLine(transform.position, transform.position + ((transform.right * (howIAmTurning / 90)) + (transform.forward * speed.z)));
+		Gizmos.DrawSphere(transform.position, attackRange);
 	}
 
 	private void TurnCar()
@@ -264,7 +291,7 @@ public class CarScript : MonoBehaviour
 		driftSparks.transform.localRotation = Quaternion.Euler(0, (spriteIndex * (-15 * Mathf.Sign(howIAmTurning))), 0);
 
 		carSprite.sprite = turningSprites[spriteIndex];
-		Debug.Log(turningSprites[spriteIndex].name);
+		//Debug.Log(turningSprites[spriteIndex].name);
 	}
 
 	private void SnapToGround(RaycastHit hit)
@@ -281,6 +308,7 @@ public class CarScript : MonoBehaviour
 	{
 		carAnimator.enabled = true;
 		carAnimator.SetTrigger("Spin");
+		StartCoroutine(SpinAttackKill());
 	}
 
 	private void PlayIntro()

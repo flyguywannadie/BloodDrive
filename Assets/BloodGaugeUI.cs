@@ -5,8 +5,15 @@ using UnityEngine.UI;
 
 public class BloodGaugeUI : MonoBehaviour
 {
+	public static BloodGaugeUI Instance { get; private set; }
+
     [SerializeField] CarScript carScript;
     [SerializeField] Slider bloodSlider;
+
+	private void Awake()
+	{
+		Instance = this;
+	}
 
 	private void OnGUI()
 	{
