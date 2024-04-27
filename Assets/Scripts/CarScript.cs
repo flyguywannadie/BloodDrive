@@ -70,7 +70,7 @@ public class CarScript : MonoBehaviour
 
 				//model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
 
-				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight, groundLM))
+				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight * 2, groundLM))
 				{
 					SnapToGround(ray);
 				}
