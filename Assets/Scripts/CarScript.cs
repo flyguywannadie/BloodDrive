@@ -39,7 +39,6 @@ public class CarScript : MonoBehaviour
 	[SerializeField, Range(0f, 1f)] float BloodAmount = 1f;
 
 	[SerializeField] float howLongToRunOutOfBlood = 20;
-	[SerializeField] float bloodGottenFromGiver = 0.15f;
 	[SerializeField] float attackRange = 10f;
 
 	[Header("Audio")]
@@ -66,27 +65,12 @@ public class CarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Debug.Log(state.ToString());
-		prevpos = transform.position;
+		//Debug.Log(state.ToString());
 		maxSpeed = maxSpeedBlood * BloodAmount;
 
         switch (state)
         {
             case eState.GROUNDED:
-				MoveCarForward();
-
-				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
-				{
-					Debug.Log("YOU PASSED THROUGH THE GROUND");
-					//Destroy(gameObject);
-					SnapToGround(ray3);
-				}
-
-
-
-				TurnCar();
-
-				//model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
 
 				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight * 2, groundLM))
 				{
@@ -96,6 +80,17 @@ public class CarScript : MonoBehaviour
 				{
 					state = eState.TOINAIR;
 					return;
+				}
+
+				MoveCarForward();
+
+				TurnCar();
+
+				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
+				{
+					Debug.Log("YOU PASSED THROUGH THE GROUND");
+					//Destroy(gameObject);
+					SnapToGround(ray3);
 				}
 
 				if (!carAnimator.isActiveAndEnabled && Input.GetKeyDown(KeyCode.Space))
@@ -123,7 +118,7 @@ public class CarScript : MonoBehaviour
 
 				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.forward, Vector3.up), Time.deltaTime);
 
-				if (Physics.Raycast(transform.position, speed.normalized, out RaycastHit ray2, 1, groundLM))
+				if (Physics.Linecast(prevpos, transform.position + speed.normalized, out RaycastHit ray2, groundLM))
 				{
 					transform.rotation = Quaternion.LookRotation(transform.forward, ray2.normal);
 					SnapToGround(ray2);
@@ -134,6 +129,8 @@ public class CarScript : MonoBehaviour
 				transform.position += speed * Time.deltaTime;
 				break;
             case eState.TOINAIR:
+				Debug.Log("To In AIR");
+				MoveCarForward();
 				float speedMagnitude = speed.magnitude;
                 speed = transform.position - prevpos;
                 speed = speed.normalized * speedMagnitude;
@@ -163,8 +160,8 @@ public class CarScript : MonoBehaviour
 		}
 
 		vehicleAudio.pitch = speed.magnitude / 30;
-
 		CheckSideCollisions();
+		prevpos = transform.position;
 	}
 
 	private void LateUpdate()
@@ -224,56 +221,57 @@ public class CarScript : MonoBehaviour
 		}
 	}
 
-	public void AddBlood()
+	public void AddBlood(float amount)
 	{
-		BloodAmount += bloodGottenFromGiver;
+		BloodAmount += amount;
 	}
 
 	private void CheckSideCollisions()
 	{
-		if (Physics.Linecast(prevpos, transform.position + transform.forward, out RaycastHit ray, wallLM))
+		if (Physics.Raycast(transform.position, transform.right, out RaycastHit ray, 0.5f, wallLM))
+		{
+			howIAmTurning = -15f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			transform.position += ray.normal;
+			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= bg.bloodDamage;
+			}
+		} else
+		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
+		{
+			howIAmTurning = 15f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			transform.position += ray.normal;
+			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= bg.bloodDamage;
+			}
+		} else
+		if (Physics.Linecast(prevpos, transform.position + transform.forward, out ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
 			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
 			{
-				BloodAmount -= 0.08f;
+				BloodAmount -= bg.bloodDamage;
 				howIAmTurning = howIAmTurning + UnityEngine.Random.Range(-15f, 15f);
 				transform.Rotate(transform.up, howIAmTurning, Space.World);
-			} else
+			}
+			else
 			{
-				transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(ray.normal, transform.up), 0.5f);
 			}
 			speed.z *= 0.5f;
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
 
-		}
-		if (Physics.Raycast(transform.position, transform.right, out ray, 0.5f, wallLM))
-		{
-			howIAmTurning = -MathF.Abs(howIAmTurning) - 15f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			//transform.position += ray.normal;
-			speed.z *= 0.8f;
-			noise.m_AmplitudeGain = 10f;
-			shakeTimer = 0.25f;
-			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
-			{
-				BloodAmount -= 0.03f;
-			}
-		} 
-		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
-		{
-			howIAmTurning = MathF.Abs(howIAmTurning) + 15f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			//transform.position += ray.normal;
-			speed.z *= 0.8f;
-			noise.m_AmplitudeGain = 10f;
-			shakeTimer = 0.25f;
-			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
-			{
-				BloodAmount -= 0.03f;
-			}
 		}
 	}
 
