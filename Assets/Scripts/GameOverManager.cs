@@ -8,6 +8,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] SuperTextMesh gameOver;
     [SerializeField] float timer = 0;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource music;
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class GameOverManager : MonoBehaviour
         gameOver.fade = 0;
         StartCoroutine(Restart());
         audioSource.Play();
+        music.Play();
     }
 
     // Update is called once per frame
