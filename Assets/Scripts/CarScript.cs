@@ -82,11 +82,7 @@ public class CarScript : MonoBehaviour
 			} else
 			{
 				deathcd.text = "DIE";
-				Instantiate(deathPrefab, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
-				
-				// tell gamemanager to gameover
-
-				Destroy(gameObject);
+				Die();
 			}
 		} else
 		{
@@ -95,6 +91,15 @@ public class CarScript : MonoBehaviour
 			StartCoroutine(DeathCountdown());
 		}
 		deathcd.text = secondsTillDie.ToString();
+	}
+
+	public void Die()
+	{
+		Instantiate(deathPrefab, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
+
+		// tell gamemanager to gameover
+
+		Destroy(gameObject);
 	}
 
     // Update is called once per frame
