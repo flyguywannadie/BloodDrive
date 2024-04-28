@@ -4267,12 +4267,6 @@ PrefabInstance:
       objectReference: {fileID: 547821735}
     - target: {fileID: 6468229217797763206, guid: d58a0a8b8179f06488d6b3f19369812a,
         type: 3}
-      propertyPath: deathPrefab
-      value: 
-      objectReference: {fileID: 158339060008303717, guid: d57eb8d21b635664b90df4508f1e142f,
-        type: 3}
-    - target: {fileID: 6468229217797763206, guid: d58a0a8b8179f06488d6b3f19369812a,
-        type: 3}
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1917775490}

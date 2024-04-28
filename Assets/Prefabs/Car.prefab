@@ -5029,6 +5029,12 @@ MonoBehaviour:
   vehicleAudio: {fileID: -6680202309848366457}
   driftAudio: {fileID: -1345499109384685952}
   prevpos: {x: 0, y: 0, z: 0}
+  secondsTillDie: 9
+  deathDelay: 15
+  markedForDeath: 0
+  deathPrefab: {fileID: 158339060008303717, guid: d57eb8d21b635664b90df4508f1e142f,
+    type: 3}
+  deathcd: {fileID: 0}
 --- !u!82 &-6680202309848366457
 AudioSource:
   m_ObjectHideFlags: 0
