@@ -29,7 +29,6 @@ public class StartGame : MonoBehaviour
         {
             LogoScreen.SetActive(false);
             MainMenu.SetActive(true);
-            MenuTheme.Play();
         }
     }
 }
