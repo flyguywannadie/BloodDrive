@@ -22,7 +22,7 @@ public class CarSpeed : MonoBehaviour
 			//speed = Vector3.Distance(lastPosition, transform.position) * 100f;
 			//lastPosition = transform.position;
 
-			speedText.text = carScript.GetSpeed().ToString("0") + " MPH";
+			speedText.text = (carScript.GetSpeed() * 37).ToString("0") + " MPH";
 
 			frames = 0;
 		}
