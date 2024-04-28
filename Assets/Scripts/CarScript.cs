@@ -142,7 +142,7 @@ public class CarScript : MonoBehaviour
 			SelectCarSprite();
 		}
 
-		if (BloodAmount > 0.25f)
+		if (BloodAmount > 0.15f)
 		{
 			BloodAmount -= (1f/howLongToRunOutOfBlood) * Time.deltaTime;
 		}

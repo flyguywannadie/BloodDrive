@@ -7,6 +7,8 @@ public class BloodGaugeUI : MonoBehaviour
 {
 	public static BloodGaugeUI Instance { get; private set; }
 
+	[SerializeField] Gradient normalColor;
+
     [SerializeField] CarScript carScript;
     [SerializeField] Slider bloodSlider;
 
@@ -18,5 +20,10 @@ public class BloodGaugeUI : MonoBehaviour
 	private void OnGUI()
 	{
 		bloodSlider.value = carScript.GetBloodAmount();
+
+		if (carScript.GetBloodAmount() > 1)
+		{
+			normalColor.Evaluate(carScript.GetBloodAmount());
+		}
 	}
 }
