@@ -82,7 +82,7 @@ public class CarScript : MonoBehaviour
 					SnapToGround(ray3);
 				}
 
-				CheckSideCollisions();
+
 
 				TurnCar();
 
@@ -163,6 +163,8 @@ public class CarScript : MonoBehaviour
 		}
 
 		vehicleAudio.pitch = speed.magnitude / 30;
+
+		CheckSideCollisions();
 	}
 
 	private void LateUpdate()
@@ -233,22 +235,45 @@ public class CarScript : MonoBehaviour
 		{
 			Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
-			transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.08f;
+				howIAmTurning = howIAmTurning + UnityEngine.Random.Range(-15f, 15f);
+				transform.Rotate(transform.up, howIAmTurning, Space.World);
+			} else
+			{
+				transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+			}
 			speed.z *= 0.5f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+
 		}
 		if (Physics.Raycast(transform.position, transform.right, out ray, 0.5f, wallLM))
 		{
-			howIAmTurning = -MathF.Abs(howIAmTurning) - 25f;
+			howIAmTurning = -MathF.Abs(howIAmTurning) - 15f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
 			//transform.position += ray.normal;
 			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.03f;
+			}
 		} 
 		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
 		{
-			howIAmTurning = MathF.Abs(howIAmTurning) + 25f;
+			howIAmTurning = MathF.Abs(howIAmTurning) + 15f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
 			//transform.position += ray.normal;
 			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.03f;
+			}
 		}
 	}
 
