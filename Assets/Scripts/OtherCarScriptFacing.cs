@@ -38,7 +38,7 @@ public class OtherCarScriptFacing : MonoBehaviour
 
         if (angle < 0)
         {
-            if (angle < -0.8)
+            if (angle < -0.9)
             {
 				spriterend.sprite = sprites[2];
 			}
@@ -48,7 +48,7 @@ public class OtherCarScriptFacing : MonoBehaviour
 			}
 		} else
         {
-			if (angle > 0.8)
+			if (angle > 0.9)
 			{
 				spriterend.sprite = sprites[0];
 			}
