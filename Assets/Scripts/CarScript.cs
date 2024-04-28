@@ -266,7 +266,7 @@ public class CarScript : MonoBehaviour
 			}
 			else
 			{
-				transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(ray.normal, transform.up), 0.5f);
 			}
 			speed.z *= 0.5f;
 			noise.m_AmplitudeGain = 10f;
