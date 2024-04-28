@@ -59,7 +59,7 @@ MonoBehaviour:
   showEventFoldout: 0
   showBetaFoldout: 0
   info:
-  - pos: {x: -39.84375, y: -100, z: 0}
+  - pos: {x: -93.75, y: -100, z: 0}
     offset: {x: 0, y: 0, z: 0}
     lineSpacing: 1
     isEndOfParagraph: 0
@@ -96,10 +96,10 @@ MonoBehaviour:
     soundClipData: {fileID: 0}
     IdxIdentifier: 0
     InfoInUse: 0
-    chMinX: 1
-    chMaxX: 34
-    chMinY: -2
-    chMaxY: 47
+    chMinX: -9
+    chMaxX: 80
+    chMinY: -7
+    chMaxY: 55
     chSize: 64
     submeshChange: 0
     invoked: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   _text: 9
   drawText: 9
   hyphenedText: 9
-  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  font: {fileID: 12800000, guid: b8b8282c4e7375b48a36e5d2023de19d, type: 3}
   _color32:
     serializedVersion: 2
     rgba: 4294967295
@@ -161,23 +161,23 @@ MonoBehaviour:
   textMesh: {fileID: 0}
   rawTopLeftBounds: {x: 200, y: -50, z: 0}
   rawBottomRightBounds: {x: -200, y: 50, z: 0}
-  rawBottomRightTextBounds: {x: 79.6875, y: -150, z: 0}
+  rawBottomRightTextBounds: {x: 187.5, y: -150, z: 0}
   topLeftBounds: {x: 1520, y: 474, z: 0}
   topRightBounds: {x: 1920, y: 474, z: 0}
   bottomLeftBounds: {x: 1520, y: 374, z: 0}
   bottomRightBounds: {x: 1920, y: 374, z: 0}
   centerBounds: {x: 1720, y: 424, z: 0}
-  topLeftTextBounds: {x: 1680.1562, y: 474, z: 0}
-  topRightTextBounds: {x: 1759.8438, y: 474, z: 0}
-  bottomLeftTextBounds: {x: 1680.1562, y: 324, z: 0}
-  bottomRightTextBounds: {x: 1759.8438, y: 324, z: 0}
+  topLeftTextBounds: {x: 1626.25, y: 474, z: 0}
+  topRightTextBounds: {x: 1813.75, y: 474, z: 0}
+  bottomLeftTextBounds: {x: 1626.25, y: 324, z: 0}
+  bottomRightTextBounds: {x: 1813.75, y: 324, z: 0}
   centerTextBounds: {x: 1720, y: 399, z: 0}
-  finalTopLeftTextBounds: {x: 1680.1562, y: 474, z: 0}
-  finalTopRightTextBounds: {x: 1759.8438, y: 474, z: 0}
-  finalBottomLeftTextBounds: {x: 1680.1562, y: 324, z: 0}
-  finalBottomRightTextBounds: {x: 1759.8438, y: 324, z: 0}
+  finalTopLeftTextBounds: {x: 1626.25, y: 474, z: 0}
+  finalTopRightTextBounds: {x: 1813.75, y: 474, z: 0}
+  finalBottomLeftTextBounds: {x: 1626.25, y: 324, z: 0}
+  finalBottomRightTextBounds: {x: 1813.75, y: 324, z: 0}
   finalCenterTextBounds: {x: 1720, y: 399, z: 0}
-  unwrappedBottomRightTextBounds: {x: 84.375, y: -150, z: 0}
+  unwrappedBottomRightTextBounds: {x: 166.40625, y: -150, z: 0}
   onCompleteEvent:
     m_PersistentCalls:
       m_Calls: []

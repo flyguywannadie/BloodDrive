@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 
 public class CarSpeed : MonoBehaviour
 {
-	[SerializeField] TMP_Text speedText;
+	//[SerializeField] TMP_Text speedText;
+	[SerializeField] SuperTextMesh SpeedText;
 	[SerializeField] CarScript carScript;
 
 	//Vector3 lastPosition = Vector3.zero;
@@ -22,7 +23,7 @@ public class CarSpeed : MonoBehaviour
 			//speed = Vector3.Distance(lastPosition, transform.position) * 100f;
 			//lastPosition = transform.position;
 
-			speedText.text = (carScript.GetSpeed() * 37).ToString("0") + " MPH";
+			SpeedText.text = (carScript.GetSpeed() * 37).ToString("0") + " MPH";
 
 			frames = 0;
 		}
