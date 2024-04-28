@@ -6,6 +6,7 @@ using UnityEngine;
 public class RaceProgress : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
+    [SerializeField] CarScript carScript;
     [SerializeField] List<GameObject> racePoints;
     int currentPoint = 0;
 
@@ -31,5 +32,10 @@ public class RaceProgress : MonoBehaviour
 
 			racePoints[currentPoint].SetActive(true);
 		}
+
+        if(other.tag == "Death")
+        {
+            carScript.Die();
+        }
 	}
 }
