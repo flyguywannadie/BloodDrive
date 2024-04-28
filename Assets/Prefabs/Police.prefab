@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fc098b04f0e714e9716340cea7c68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splinetofollow: []
+  splinetofollow: {fileID: 0}
   currentLane: 0
   speed: 30
   tdistance: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 84329c91c5ca02f45b1a12bdf3598acb, type: 3}
   - {fileID: 21300000, guid: 7913530b2e971b546852b4614da2710e, type: 3}
-  - {fileID: 21300000, guid: 1799f4fd8fb68a646956f745c8f32b16, type: 3}
+  - {fileID: 21300000, guid: 4ccfd0ff6eb9d364a89ee0d6592967dd, type: 3}
   - {fileID: 21300000, guid: f4fc42b6898ee014ca6cb29efcfbc1cf, type: 3}
   spriterend: {fileID: 808895444756709929}
 --- !u!114 &2262758475025306007
