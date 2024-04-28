@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour
 {
 	[SerializeField] SplineContainer[] splines;
     [SerializeField] GameObject[] enemyType;
-    [SerializeField] Transform[] spawnPositions;
 	[SerializeField] CarScript player;
 
 	[SerializeField] public int spawnMin;
