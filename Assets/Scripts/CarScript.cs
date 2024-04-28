@@ -55,6 +55,8 @@ public class CarScript : MonoBehaviour
 
 	[SerializeField] GameObject deathPrefab;
 
+	[SerializeField] SuperTextMesh deathcd;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -74,10 +76,12 @@ public class CarScript : MonoBehaviour
 		{
 			if (secondsTillDie > 0)
 			{
+				deathcd.gameObject.SetActive(true);
 				secondsTillDie--;
 				StartCoroutine(DeathCountdown());
 			} else
 			{
+				deathcd.text = "DIE";
 				Instantiate(deathPrefab, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
 				
 				// tell gamemanager to gameover
@@ -86,9 +90,11 @@ public class CarScript : MonoBehaviour
 			}
 		} else
 		{
+			deathcd.gameObject.SetActive(false);
 			secondsTillDie = 9;
 			StartCoroutine(DeathCountdown());
 		}
+		deathcd.text = secondsTillDie.ToString();
 	}
 
     // Update is called once per frame
