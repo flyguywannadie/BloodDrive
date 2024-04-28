@@ -45,6 +45,11 @@ public class GameOverManager : MonoBehaviour
                 gameOver.fade = 0;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()

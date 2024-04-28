@@ -30,5 +30,10 @@ public class StartGame : MonoBehaviour
             LogoScreen.SetActive(false);
             MainMenu.SetActive(true);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
