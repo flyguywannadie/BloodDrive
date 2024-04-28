@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
 
     public void TrafficEvent()
     {
-        spawner.spawnMin = 30;
-        spawner.spawnMax = 40;
+        spawner.spawnMin = 4;
+        spawner.spawnMax = 6;
         spawner.spawnTimeMin = 0.1f;
         spawner.spawnTimeMax = 0.5f;
 
