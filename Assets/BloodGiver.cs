@@ -8,6 +8,9 @@ public class BloodGiver : MonoBehaviour
 	[SerializeField] CarScript player;
 	[SerializeField] GameObject[] particleffectprefab;
 
+	[SerializeField] float amountToGive = 0.15f;
+	public float bloodDamage = 0.07f;
+
 	private void Start()
 	{
 		player = FindObjectOfType<CarScript>();
@@ -23,7 +26,7 @@ public class BloodGiver : MonoBehaviour
 				Instantiate(prefab, transform.position, Quaternion.identity);
 			}
 		}
-		player.AddBlood();
+		player.AddBlood(amountToGive);
 		Destroy(gameObject);
 	}
 }

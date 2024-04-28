@@ -39,7 +39,6 @@ public class CarScript : MonoBehaviour
 	[SerializeField, Range(0f, 1f)] float BloodAmount = 1f;
 
 	[SerializeField] float howLongToRunOutOfBlood = 20;
-	[SerializeField] float bloodGottenFromGiver = 0.15f;
 	[SerializeField] float attackRange = 10f;
 
 	[Header("Audio")]
@@ -222,9 +221,9 @@ public class CarScript : MonoBehaviour
 		}
 	}
 
-	public void AddBlood()
+	public void AddBlood(float amount)
 	{
-		BloodAmount += bloodGottenFromGiver;
+		BloodAmount += amount;
 	}
 
 	private void CheckSideCollisions()
@@ -239,7 +238,7 @@ public class CarScript : MonoBehaviour
 			shakeTimer = 0.25f;
 			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
 			{
-				BloodAmount -= 0.03f;
+				BloodAmount -= bg.bloodDamage;
 			}
 		} else
 		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
@@ -252,7 +251,7 @@ public class CarScript : MonoBehaviour
 			shakeTimer = 0.25f;
 			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
 			{
-				BloodAmount -= 0.03f;
+				BloodAmount -= bg.bloodDamage;
 			}
 		} else
 		if (Physics.Linecast(prevpos, transform.position + transform.forward, out ray, wallLM))
@@ -261,7 +260,7 @@ public class CarScript : MonoBehaviour
 			//Destroy(gameObject);
 			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
 			{
-				BloodAmount -= 0.08f;
+				BloodAmount -= bg.bloodDamage;
 				howIAmTurning = howIAmTurning + UnityEngine.Random.Range(-15f, 15f);
 				transform.Rotate(transform.up, howIAmTurning, Space.World);
 			}
