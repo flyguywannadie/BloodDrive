@@ -175,7 +175,7 @@ public class CarScript : MonoBehaviour
 
 	public IEnumerator SpinAttackKill()
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			var hits = Physics.OverlapSphere(transform.position, attackRange);
 
@@ -186,7 +186,7 @@ public class CarScript : MonoBehaviour
 					bg.Killed();
 				}
 			}
-			yield return null;
+			yield return new WaitForFixedUpdate();
 		}
 	}
 

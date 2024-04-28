@@ -19,6 +19,13 @@ public class Billboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		transform.LookAt(camtolookat.transform, upcompare.up);
+        if (upcompare)
+        {
+			//transform.LookAt(camtolookat.transform, upcompare.up);
+            transform.rotation = Quaternion.LookRotation(-upcompare.forward);
+		} else
+        {
+			transform.rotation = Quaternion.LookRotation(-camtolookat.transform.forward);
+		}
     }
 }

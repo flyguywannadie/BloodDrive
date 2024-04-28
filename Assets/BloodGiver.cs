@@ -6,7 +6,7 @@ using UnityEngine;
 public class BloodGiver : MonoBehaviour
 {
 	[SerializeField] CarScript player;
-	[SerializeField] GameObject particleffectprefab;
+	[SerializeField] GameObject[] particleffectprefab;
 
 	private void Start()
 	{
@@ -15,9 +15,12 @@ public class BloodGiver : MonoBehaviour
 
 	public void Killed()
 	{
-		if (particleffectprefab)
+		if (particleffectprefab.Length > 0)
 		{
-			Instantiate(particleffectprefab, transform.position, Quaternion.identity);
+			foreach (var prefab in particleffectprefab)
+			{
+				Instantiate(prefab, transform.position, Quaternion.identity);
+			}
 		}
 		player.AddBlood();
 		Destroy(gameObject);
