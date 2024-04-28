@@ -11,6 +11,7 @@ public class BloodGaugeUI : MonoBehaviour
 
     [SerializeField] CarScript carScript;
     [SerializeField] Slider bloodSlider;
+	[SerializeField] Image sliderfill;
 
 	private void Awake()
 	{
@@ -19,11 +20,10 @@ public class BloodGaugeUI : MonoBehaviour
 
 	private void OnGUI()
 	{
-		bloodSlider.value = carScript.GetBloodAmount();
 
-		if (carScript.GetBloodAmount() > 1)
-		{
-			normalColor.Evaluate(carScript.GetBloodAmount());
-		}
+		float blood = carScript.GetBloodAmount();
+		bloodSlider.value = blood;
+
+		sliderfill.color = normalColor.Evaluate(blood);
 	}
 }
