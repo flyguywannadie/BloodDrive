@@ -290,7 +290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 52.645874, y: 41.932495}
+  m_AnchoredPosition: {x: 51.395874, y: 41.932495}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &4724482352197867374
@@ -353,7 +353,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -397,7 +397,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 48
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -441,7 +441,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -485,7 +485,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -529,7 +529,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -573,7 +573,7 @@ MonoBehaviour:
   quality: 64
   filterMode: 1
   maskMode: 0
-  style: 0
+  style: 2
   baseOffset: {x: 0, y: 0, z: 0}
   relativeBaseOffset: 1
   lineSpacing: 1
@@ -593,22 +593,22 @@ MonoBehaviour:
   textMesh: {fileID: 0}
   rawTopLeftBounds: {x: 0, y: -100, z: 0}
   rawBottomRightBounds: {x: -200, y: 0, z: 0}
-  rawBottomRightTextBounds: {x: 128.90625, y: -33, z: 0}
-  topLeftBounds: {x: 126.35016, y: 204.8772, z: 0}
-  topRightBounds: {x: 334.82855, y: 204.8772, z: 0}
-  bottomLeftBounds: {x: 126.35016, y: 100.638, z: 0}
-  bottomRightBounds: {x: 334.82855, y: 100.638, z: 0}
-  centerBounds: {x: 230.58936, y: 152.7576, z: 0}
-  topLeftTextBounds: {x: 336.00006, y: 426.24997, z: 0}
-  topRightTextBounds: {x: 645.37506, y: 426.24997, z: 0}
-  bottomLeftTextBounds: {x: 336.00006, y: 347.05, z: 0}
-  bottomRightTextBounds: {x: 645.37506, y: 347.05, z: 0}
-  centerTextBounds: {x: 490.68756, y: 386.64996, z: 0}
-  finalTopLeftTextBounds: {x: 126.35016, y: 204.8772, z: 0}
-  finalTopRightTextBounds: {x: 260.721, y: 204.8772, z: 0}
-  finalBottomLeftTextBounds: {x: 126.35016, y: 170.47827, z: 0}
-  finalBottomRightTextBounds: {x: 260.721, y: 170.47827, z: 0}
-  finalCenterTextBounds: {x: 193.53558, y: 187.67773, z: 0}
+  rawBottomRightTextBounds: {x: 133.03125, y: -33, z: 0}
+  topLeftBounds: {x: 123.35016, y: 204.8772, z: 0}
+  topRightBounds: {x: 331.82855, y: 204.8772, z: 0}
+  bottomLeftBounds: {x: 123.35016, y: 100.638, z: 0}
+  bottomRightBounds: {x: 331.82855, y: 100.638, z: 0}
+  centerBounds: {x: 227.58936, y: 152.7576, z: 0}
+  topLeftTextBounds: {x: 126.35016, y: 204.8772, z: 0}
+  topRightTextBounds: {x: 265.0208, y: 204.8772, z: 0}
+  bottomLeftTextBounds: {x: 126.35016, y: 170.47827, z: 0}
+  bottomRightTextBounds: {x: 265.0208, y: 170.47827, z: 0}
+  centerTextBounds: {x: 195.68549, y: 187.67773, z: 0}
+  finalTopLeftTextBounds: {x: 123.35016, y: 204.8772, z: 0}
+  finalTopRightTextBounds: {x: 262.0208, y: 204.8772, z: 0}
+  finalBottomLeftTextBounds: {x: 123.35016, y: 170.47827, z: 0}
+  finalBottomRightTextBounds: {x: 262.0208, y: 170.47827, z: 0}
+  finalCenterTextBounds: {x: 192.68549, y: 187.67773, z: 0}
   unwrappedBottomRightTextBounds: {x: 131.48438, y: -33, z: 0}
   onCompleteEvent:
     m_PersistentCalls:
@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 52.645905, y: 28.902695}
+  m_AnchoredPosition: {x: 51.395905, y: 28.902695}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &6921112933575656000
@@ -827,7 +827,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -871,7 +871,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -914,8 +914,8 @@ MonoBehaviour:
     soundClipData: {fileID: 0}
     IdxIdentifier: 0
     InfoInUse: 0
-    chMinX: -1
-    chMaxX: 46
+    chMinX: 5
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -959,7 +959,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1003,7 +1003,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   quality: 64
   filterMode: 1
   maskMode: 0
-  style: 0
+  style: 2
   baseOffset: {x: 0, y: 0, z: 0}
   relativeBaseOffset: 1
   lineSpacing: 1
@@ -1067,22 +1067,22 @@ MonoBehaviour:
   textMesh: {fileID: 0}
   rawTopLeftBounds: {x: 0, y: -100, z: 0}
   rawBottomRightBounds: {x: -200, y: 0, z: 0}
-  rawBottomRightTextBounds: {x: 128.90625, y: -33, z: 0}
-  topLeftBounds: {x: 126.35022, y: 173.60568, z: 0}
-  topRightBounds: {x: 334.8286, y: 173.60568, z: 0}
-  bottomLeftBounds: {x: 126.35022, y: 69.366486, z: 0}
-  bottomRightBounds: {x: 334.8286, y: 69.366486, z: 0}
-  centerBounds: {x: 230.58942, y: 121.486084, z: 0}
-  topLeftTextBounds: {x: 360.00006, y: 216.00003, z: 0}
-  topRightTextBounds: {x: 669.37506, y: 216.00003, z: 0}
-  bottomLeftTextBounds: {x: 360.00006, y: 136.80002, z: 0}
-  bottomRightTextBounds: {x: 669.37506, y: 136.80002, z: 0}
-  centerTextBounds: {x: 514.68756, y: 176.40002, z: 0}
-  finalTopLeftTextBounds: {x: 126.35022, y: 173.60568, z: 0}
-  finalTopRightTextBounds: {x: 260.72107, y: 173.60568, z: 0}
-  finalBottomLeftTextBounds: {x: 126.35022, y: 139.20676, z: 0}
-  finalBottomRightTextBounds: {x: 260.72107, y: 139.20676, z: 0}
-  finalCenterTextBounds: {x: 193.53564, y: 156.40622, z: 0}
+  rawBottomRightTextBounds: {x: 133.03125, y: -33, z: 0}
+  topLeftBounds: {x: 123.35022, y: 173.60568, z: 0}
+  topRightBounds: {x: 331.8286, y: 173.60568, z: 0}
+  bottomLeftBounds: {x: 123.35022, y: 69.366486, z: 0}
+  bottomRightBounds: {x: 331.8286, y: 69.366486, z: 0}
+  centerBounds: {x: 227.58942, y: 121.486084, z: 0}
+  topLeftTextBounds: {x: 126.35022, y: 173.60568, z: 0}
+  topRightTextBounds: {x: 265.02087, y: 173.60568, z: 0}
+  bottomLeftTextBounds: {x: 126.35022, y: 139.20676, z: 0}
+  bottomRightTextBounds: {x: 265.02087, y: 139.20676, z: 0}
+  centerTextBounds: {x: 195.68555, y: 156.40622, z: 0}
+  finalTopLeftTextBounds: {x: 123.35022, y: 173.60568, z: 0}
+  finalTopRightTextBounds: {x: 262.02087, y: 173.60568, z: 0}
+  finalBottomLeftTextBounds: {x: 123.35022, y: 139.20676, z: 0}
+  finalBottomRightTextBounds: {x: 262.02087, y: 139.20676, z: 0}
+  finalCenterTextBounds: {x: 192.68555, y: 156.40622, z: 0}
   unwrappedBottomRightTextBounds: {x: 131.48438, y: -33, z: 0}
   onCompleteEvent:
     m_PersistentCalls:
@@ -1225,7 +1225,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1269,7 +1269,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1312,8 +1312,8 @@ MonoBehaviour:
     soundClipData: {fileID: 0}
     IdxIdentifier: 0
     InfoInUse: 0
-    chMinX: -1
-    chMaxX: 46
+    chMinX: 5
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1357,7 +1357,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1401,7 +1401,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1445,7 +1445,7 @@ MonoBehaviour:
   quality: 64
   filterMode: 1
   maskMode: 0
-  style: 0
+  style: 2
   baseOffset: {x: 0, y: 0, z: 0}
   relativeBaseOffset: 1
   lineSpacing: 1
@@ -1465,22 +1465,22 @@ MonoBehaviour:
   textMesh: {fileID: 0}
   rawTopLeftBounds: {x: 0, y: -100, z: 0}
   rawBottomRightBounds: {x: -200, y: 0, z: 0}
-  rawBottomRightTextBounds: {x: 125, y: -32, z: 0}
-  topLeftBounds: {x: 126.10004, y: 175.71133, z: 0}
-  topRightBounds: {x: 334.57843, y: 175.71133, z: 0}
-  bottomLeftBounds: {x: 126.10004, y: 71.47214, z: 0}
-  bottomRightBounds: {x: 334.57843, y: 71.47214, z: 0}
-  centerBounds: {x: 230.33923, y: 123.591736, z: 0}
-  topLeftTextBounds: {x: 359.424, y: 220.84802, z: 0}
-  topRightTextBounds: {x: 659.424, y: 220.84802, z: 0}
-  bottomLeftTextBounds: {x: 359.424, y: 144.04803, z: 0}
-  bottomRightTextBounds: {x: 659.424, y: 144.04803, z: 0}
-  centerTextBounds: {x: 509.424, y: 182.44803, z: 0}
-  finalTopLeftTextBounds: {x: 126.10004, y: 175.71133, z: 0}
-  finalTopRightTextBounds: {x: 256.39905, y: 175.71133, z: 0}
-  finalBottomLeftTextBounds: {x: 126.10004, y: 142.35477, z: 0}
-  finalBottomRightTextBounds: {x: 256.39905, y: 142.35477, z: 0}
-  finalCenterTextBounds: {x: 191.24954, y: 159.03305, z: 0}
+  rawBottomRightTextBounds: {x: 129, y: -32, z: 0}
+  topLeftBounds: {x: 123.10004, y: 175.71133, z: 0}
+  topRightBounds: {x: 331.57843, y: 175.71133, z: 0}
+  bottomLeftBounds: {x: 123.10004, y: 71.47214, z: 0}
+  bottomRightBounds: {x: 331.57843, y: 71.47214, z: 0}
+  centerBounds: {x: 227.33923, y: 123.591736, z: 0}
+  topLeftTextBounds: {x: 126.10004, y: 175.71133, z: 0}
+  topRightTextBounds: {x: 260.5686, y: 175.71133, z: 0}
+  bottomLeftTextBounds: {x: 126.10004, y: 142.35477, z: 0}
+  bottomRightTextBounds: {x: 260.5686, y: 142.35477, z: 0}
+  centerTextBounds: {x: 193.33432, y: 159.03305, z: 0}
+  finalTopLeftTextBounds: {x: 123.10004, y: 175.71133, z: 0}
+  finalTopRightTextBounds: {x: 257.5686, y: 175.71133, z: 0}
+  finalBottomLeftTextBounds: {x: 123.10004, y: 142.35477, z: 0}
+  finalBottomRightTextBounds: {x: 257.5686, y: 142.35477, z: 0}
+  finalCenterTextBounds: {x: 190.33432, y: 159.03305, z: 0}
   unwrappedBottomRightTextBounds: {x: 127.5, y: -32, z: 0}
   onCompleteEvent:
     m_PersistentCalls:
@@ -1701,7 +1701,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1745,7 +1745,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 48
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1789,7 +1789,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1833,7 +1833,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1877,7 +1877,7 @@ MonoBehaviour:
     IdxIdentifier: 0
     InfoInUse: 0
     chMinX: -1
-    chMaxX: 46
+    chMaxX: 54
     chMinY: -1
     chMaxY: 33
     chSize: 64
@@ -1921,7 +1921,7 @@ MonoBehaviour:
   quality: 64
   filterMode: 1
   maskMode: 0
-  style: 0
+  style: 2
   baseOffset: {x: 0, y: 0, z: 0}
   relativeBaseOffset: 1
   lineSpacing: 1
@@ -1941,22 +1941,22 @@ MonoBehaviour:
   textMesh: {fileID: 0}
   rawTopLeftBounds: {x: 0, y: -100, z: 0}
   rawBottomRightBounds: {x: -200, y: 0, z: 0}
-  rawBottomRightTextBounds: {x: 125, y: -32, z: 0}
-  topLeftBounds: {x: 126.099915, y: 206.98285, z: 0}
-  topRightBounds: {x: 334.57837, y: 206.98285, z: 0}
-  bottomLeftBounds: {x: 126.099915, y: 102.74365, z: 0}
-  bottomRightBounds: {x: 334.57837, y: 102.74365, z: 0}
-  centerBounds: {x: 230.33914, y: 154.86325, z: 0}
-  topLeftTextBounds: {x: 335.424, y: 431.098, z: 0}
-  topRightTextBounds: {x: 635.424, y: 431.098, z: 0}
-  bottomLeftTextBounds: {x: 335.424, y: 354.298, z: 0}
-  bottomRightTextBounds: {x: 635.424, y: 354.298, z: 0}
-  centerTextBounds: {x: 485.424, y: 392.698, z: 0}
-  finalTopLeftTextBounds: {x: 126.099915, y: 206.98285, z: 0}
-  finalTopRightTextBounds: {x: 256.399, y: 206.98285, z: 0}
-  finalBottomLeftTextBounds: {x: 126.099915, y: 173.62631, z: 0}
-  finalBottomRightTextBounds: {x: 256.399, y: 173.62631, z: 0}
-  finalCenterTextBounds: {x: 191.24945, y: 190.30458, z: 0}
+  rawBottomRightTextBounds: {x: 129, y: -32, z: 0}
+  topLeftBounds: {x: 123.099915, y: 206.98285, z: 0}
+  topRightBounds: {x: 331.57837, y: 206.98285, z: 0}
+  bottomLeftBounds: {x: 123.099915, y: 102.74365, z: 0}
+  bottomRightBounds: {x: 331.57837, y: 102.74365, z: 0}
+  centerBounds: {x: 227.33914, y: 154.86325, z: 0}
+  topLeftTextBounds: {x: 126.099915, y: 206.98285, z: 0}
+  topRightTextBounds: {x: 260.56848, y: 206.98285, z: 0}
+  bottomLeftTextBounds: {x: 126.099915, y: 173.62631, z: 0}
+  bottomRightTextBounds: {x: 260.56848, y: 173.62631, z: 0}
+  centerTextBounds: {x: 193.3342, y: 190.30458, z: 0}
+  finalTopLeftTextBounds: {x: 123.099915, y: 206.98285, z: 0}
+  finalTopRightTextBounds: {x: 257.56848, y: 206.98285, z: 0}
+  finalBottomLeftTextBounds: {x: 123.099915, y: 173.62631, z: 0}
+  finalBottomRightTextBounds: {x: 257.56848, y: 173.62631, z: 0}
+  finalCenterTextBounds: {x: 190.3342, y: 190.30458, z: 0}
   unwrappedBottomRightTextBounds: {x: 127.5, y: -32, z: 0}
   onCompleteEvent:
     m_PersistentCalls:
