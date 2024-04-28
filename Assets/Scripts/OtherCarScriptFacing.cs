@@ -23,7 +23,7 @@ public class OtherCarScriptFacing : MonoBehaviour
         float sideAngle = Vector3.Dot(forward.right, cameradirection.normalized);
 
         //transform.localRotation = Quaternion.Euler(0, angle, 0);
-        Debug.Log(cameradirection.ToString());
+       // Debug.Log(cameradirection.ToString());
 
         if (spriterend.sprite != sprites[0] && spriterend.sprite != sprites[2])
         {

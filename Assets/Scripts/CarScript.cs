@@ -119,7 +119,7 @@ public class CarScript : MonoBehaviour
 
 				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.forward, Vector3.up), Time.deltaTime);
 
-				if (Physics.Raycast(transform.position, speed.normalized, out RaycastHit ray2, 1, groundLM))
+				if (Physics.Linecast(prevpos, transform.position + speed.normalized, out RaycastHit ray2, groundLM))
 				{
 					transform.rotation = Quaternion.LookRotation(transform.forward, ray2.normal);
 					SnapToGround(ray2);
@@ -229,7 +229,33 @@ public class CarScript : MonoBehaviour
 
 	private void CheckSideCollisions()
 	{
-		if (Physics.Linecast(prevpos, transform.position + transform.forward, out RaycastHit ray, wallLM))
+		if (Physics.Raycast(transform.position, transform.right, out RaycastHit ray, 0.5f, wallLM))
+		{
+			howIAmTurning = -15f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			//transform.position += ray.normal;
+			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.03f;
+			}
+		} else
+		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
+		{
+			howIAmTurning = 15f;
+			transform.Rotate(transform.up, howIAmTurning, Space.World);
+			//transform.position += ray.normal;
+			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.03f;
+			}
+		} else
+		if (Physics.Linecast(prevpos, transform.position + transform.forward, out ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
@@ -238,7 +264,8 @@ public class CarScript : MonoBehaviour
 				BloodAmount -= 0.08f;
 				howIAmTurning = howIAmTurning + UnityEngine.Random.Range(-15f, 15f);
 				transform.Rotate(transform.up, howIAmTurning, Space.World);
-			} else
+			}
+			else
 			{
 				transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
 			}
@@ -246,32 +273,6 @@ public class CarScript : MonoBehaviour
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
 
-		}
-		if (Physics.Raycast(transform.position, transform.right, out ray, 0.5f, wallLM))
-		{
-			howIAmTurning = -MathF.Abs(howIAmTurning) - 15f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			//transform.position += ray.normal;
-			speed.z *= 0.8f;
-			noise.m_AmplitudeGain = 10f;
-			shakeTimer = 0.25f;
-			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
-			{
-				BloodAmount -= 0.03f;
-			}
-		} 
-		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
-		{
-			howIAmTurning = MathF.Abs(howIAmTurning) + 15f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			//transform.position += ray.normal;
-			speed.z *= 0.8f;
-			noise.m_AmplitudeGain = 10f;
-			shakeTimer = 0.25f;
-			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
-			{
-				BloodAmount -= 0.03f;
-			}
 		}
 	}
 
