@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4068348321933556214}
   - component: {fileID: 2427985132736483756}
   - component: {fileID: 3006530267910878161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4457638666593840229}
   - component: {fileID: 3890474777258125494}
   - component: {fileID: 6532294260820634672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallLongBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 3512154165821239846}
   - component: {fileID: 6286962899038568835}
   - component: {fileID: 3768853480866825000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 6365941732046618854}
   - component: {fileID: 1974511076839132883}
   - component: {fileID: 8512603161775167275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

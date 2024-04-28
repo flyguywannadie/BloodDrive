@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 111470644713911955}
   - component: {fileID: 6594092619720120639}
   - component: {fileID: 1671760879316574002}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,13 +118,13 @@ GameObject:
   - component: {fileID: 2435772102249902069}
   - component: {fileID: 4732909914986071162}
   - component: {fileID: 1289530552401303098}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5227177334567217226
 Transform:
   m_ObjectHideFlags: 0
@@ -212,124 +212,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1367686170561066185
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6866194402518362865}
-  - component: {fileID: 8441025368145940040}
-  - component: {fileID: 236159452100613438}
-  m_Layer: 8
-  m_Name: Point Light (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6866194402518362865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367686170561066185}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.08679005, y: -0.70176023, z: 0.08679014, w: 0.7017603}
-  m_LocalPosition: {x: -0.581, y: -0.354, z: -0.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 855835241311523312}
-  m_LocalEulerAnglesHint: {x: 14.101, y: -90, z: 0}
---- !u!108 &8441025368145940040
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367686170561066185}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 0
-  m_Shape: 0
-  m_Color: {r: 0.9960785, g: 0.054901965, b: 0.9686275, a: 1}
-  m_Intensity: 100
-  m_Range: 26.521662
-  m_SpotAngle: 179
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!114 &236159452100613438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367686170561066185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &1525421242719154934
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +224,7 @@ GameObject:
   - component: {fileID: 9078376678268328374}
   - component: {fileID: 6180698334847764160}
   - component: {fileID: 1436410257144733222}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,124 +318,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2155666412003084942
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3732027585306864835}
-  - component: {fileID: 2067682946579767437}
-  - component: {fileID: 3904666981286924639}
-  m_Layer: 8
-  m_Name: Point Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3732027585306864835
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155666412003084942}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.08679005, y: -0.70176023, z: 0.08679014, w: 0.7017603}
-  m_LocalPosition: {x: -0.581, y: -0.354, z: 0.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 855835241311523312}
-  m_LocalEulerAnglesHint: {x: 14.101, y: -90, z: 0}
---- !u!108 &2067682946579767437
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155666412003084942}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 0
-  m_Shape: 0
-  m_Color: {r: 0.9960785, g: 0.054901965, b: 0.9686275, a: 1}
-  m_Intensity: 100
-  m_Range: 20.149315
-  m_SpotAngle: 179
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!114 &3904666981286924639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155666412003084942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &2397383731153192307
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,13 +330,13 @@ GameObject:
   - component: {fileID: 5748379369278642242}
   - component: {fileID: 3347268424572699055}
   - component: {fileID: 4284721028534708150}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &577686279474771184
 Transform:
   m_ObjectHideFlags: 0
@@ -672,7 +436,7 @@ GameObject:
   - component: {fileID: 7520724363060178137}
   - component: {fileID: 1642874019436750862}
   - component: {fileID: 8946444456932125101}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +542,7 @@ GameObject:
   - component: {fileID: 6462159129440351414}
   - component: {fileID: 6255589765555492517}
   - component: {fileID: 2638240301773769458}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +648,7 @@ GameObject:
   - component: {fileID: 2340774092731679985}
   - component: {fileID: 6762604805784794819}
   - component: {fileID: 8491353259674556555}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +754,7 @@ GameObject:
   - component: {fileID: 8586720976601778745}
   - component: {fileID: 8151962061216644840}
   - component: {fileID: 7422763463015024017}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +860,7 @@ GameObject:
   - component: {fileID: 8235864526642643054}
   - component: {fileID: 407879313458523719}
   - component: {fileID: 4202251284111706003}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1202,13 +966,13 @@ GameObject:
   - component: {fileID: 1994614611625186973}
   - component: {fileID: 6353415286150481356}
   - component: {fileID: 1159022166433160676}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5073445612725573827
 Transform:
   m_ObjectHideFlags: 0
@@ -1308,7 +1072,7 @@ GameObject:
   - component: {fileID: 3562869344753353036}
   - component: {fileID: 5852958632526575441}
   - component: {fileID: 1104872882922262991}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,13 +1178,13 @@ GameObject:
   - component: {fileID: 5590650026541560178}
   - component: {fileID: 4991217265523632441}
   - component: {fileID: 7995617209238294000}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8472924921788124317
 Transform:
   m_ObjectHideFlags: 0
@@ -1520,7 +1284,7 @@ GameObject:
   - component: {fileID: 6630286815603817093}
   - component: {fileID: 6953118613509391957}
   - component: {fileID: 8013037684277479776}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,13 +1390,13 @@ GameObject:
   - component: {fileID: 1968962784012759778}
   - component: {fileID: 4995237683041890858}
   - component: {fileID: 8125513733088833320}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &32113849791201862
 Transform:
   m_ObjectHideFlags: 0
@@ -1732,13 +1496,13 @@ GameObject:
   - component: {fileID: 918050036839722705}
   - component: {fileID: 8253130720661250403}
   - component: {fileID: 4156887648013492619}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6731340949378162532
 Transform:
   m_ObjectHideFlags: 0
@@ -1838,7 +1602,7 @@ GameObject:
   - component: {fileID: 3753607194192129210}
   - component: {fileID: 6923874290004788783}
   - component: {fileID: 739798665247391481}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1944,8 +1708,8 @@ GameObject:
   - component: {fileID: 1067698873216052598}
   - component: {fileID: 7963319298509014340}
   - component: {fileID: 7143018132965049130}
-  m_Layer: 8
-  m_Name: MidBuildingPink
+  m_Layer: 0
+  m_Name: DMidBuildingPink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1989,8 +1753,6 @@ Transform:
   - {fileID: 32113849791201862}
   - {fileID: 7769775108755735350}
   - {fileID: 3282245018658992334}
-  - {fileID: 3732027585306864835}
-  - {fileID: 6866194402518362865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1067698873216052598
@@ -2076,7 +1838,7 @@ GameObject:
   - component: {fileID: 3685787389550190706}
   - component: {fileID: 9012021933421717665}
   - component: {fileID: 7377035637136019741}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,13 +1944,13 @@ GameObject:
   - component: {fileID: 7411955635901843714}
   - component: {fileID: 5777666667899883044}
   - component: {fileID: 1757710737971369165}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8996933016791018580
 Transform:
   m_ObjectHideFlags: 0
@@ -2288,13 +2050,13 @@ GameObject:
   - component: {fileID: 279285615403658215}
   - component: {fileID: 1538488735525371975}
   - component: {fileID: 705454919722326158}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3212201770500191314
 Transform:
   m_ObjectHideFlags: 0
@@ -2394,7 +2156,7 @@ GameObject:
   - component: {fileID: 6239791359803232038}
   - component: {fileID: 8245544309334295718}
   - component: {fileID: 5087676673819692976}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2500,13 +2262,13 @@ GameObject:
   - component: {fileID: 3993807351431079314}
   - component: {fileID: 657915642119488416}
   - component: {fileID: 4421669846378518336}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3282245018658992334
 Transform:
   m_ObjectHideFlags: 0
@@ -2606,13 +2368,13 @@ GameObject:
   - component: {fileID: 861010573529399231}
   - component: {fileID: 3402348753274060242}
   - component: {fileID: 3814182593106971961}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2019461284565085808
 Transform:
   m_ObjectHideFlags: 0
@@ -2712,7 +2474,7 @@ GameObject:
   - component: {fileID: 1443345552603659225}
   - component: {fileID: 4446799374790437338}
   - component: {fileID: 838997848812687559}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2818,13 +2580,13 @@ GameObject:
   - component: {fileID: 6299116219670445351}
   - component: {fileID: 747812887256658852}
   - component: {fileID: 6856951397509231792}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3912382622811289683
 Transform:
   m_ObjectHideFlags: 0
@@ -2924,13 +2686,13 @@ GameObject:
   - component: {fileID: 4033378364111767931}
   - component: {fileID: 4788860989214498781}
   - component: {fileID: 61954691108233479}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6417861870429031493
 Transform:
   m_ObjectHideFlags: 0
