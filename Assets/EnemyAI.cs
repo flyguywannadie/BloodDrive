@@ -8,8 +8,8 @@ using UnityEngine.Splines;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] SplineContainer[] splinetofollow;
-	[SerializeField] int currentLane = 0;
+    [SerializeField] public List<SplineContainer> splinetofollow;
+	[SerializeField] public int currentLane = 0;
 	public float speed = 1;
 	[Range(0, 1)] public float tdistance = 0;
 
@@ -19,10 +19,9 @@ public class EnemyAI : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		float variance = UnityEngine.Random.Range(-10f, 10f);
-		speed = (Mathf.Sign(UnityEngine.Random.Range(-1f, 1f)) * speed) + variance;
-		distance = UnityEngine.Random.Range(0, length);
-		StartCoroutine(SwapLanesCoroutine());
+		//float variance = UnityEngine.Random.Range(-10f, 10f);
+		//speed = (Mathf.Sign(UnityEngine.Random.Range(-1f, 1f)) * speed) + variance;
+		//StartCoroutine(SwapLanesCoroutine());
 	}
 
 	// Update is called once per frame
@@ -55,7 +54,7 @@ public class EnemyAI : MonoBehaviour
 
 	private IEnumerator SwapLanesCoroutine()
 	{
-		currentLane = UnityEngine.Random.Range(0, splinetofollow.Length);
+		currentLane = UnityEngine.Random.Range(0, splinetofollow.Count);
 		yield return new WaitForSeconds(UnityEngine.Random.Range(3, 10));
 		StartCoroutine(SwapLanesCoroutine());
 	}

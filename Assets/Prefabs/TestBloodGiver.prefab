@@ -163,10 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fc098b04f0e714e9716340cea7c68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splinetofollow:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  splinetofollow: []
   currentLane: 0
   speed: 40
   tdistance: 0

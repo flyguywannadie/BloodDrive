@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour
 {
     int currentLap = 1;
 	[SerializeField] TMP_Text lapText;
-    //[SerializeField] 
+    [SerializeField] EnemySpawner spawner;
 
 	void Start()
     {
-        
+        spawner.spawnEnemies();
     }
 
     void Update()
