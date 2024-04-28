@@ -46,17 +46,19 @@ public class CarScript : MonoBehaviour
 	[SerializeField] AudioSource vehicleAudio;
 	[SerializeField] AudioSource driftAudio;
 
-	Vector3 prevpos;
+	[SerializeField] Vector3 prevpos;
 
-    // Start is called before the first frame update
-    void Start()
+	CinemachineBasicMultiChannelPerlin noise;
+
+	// Start is called before the first frame update
+	void Start()
     {
         originalMaxTurn = maxturnAngle;   
         originalMaxSpeed = maxSpeedBlood;
 		prevpos = transform.position;
 		PlayIntro();
 
-		CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+		noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 		noise.m_AmplitudeGain = 0f;
 
 	}
@@ -65,14 +67,12 @@ public class CarScript : MonoBehaviour
     void Update()
     {
 		Debug.Log(state.ToString());
-
+		prevpos = transform.position;
 		maxSpeed = maxSpeedBlood * BloodAmount;
 
         switch (state)
         {
             case eState.GROUNDED:
-				prevpos = transform.position;
-
 				MoveCarForward();
 
 				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
@@ -82,7 +82,7 @@ public class CarScript : MonoBehaviour
 					SnapToGround(ray3);
 				}
 
-				CheckSideCollisions();
+
 
 				TurnCar();
 
@@ -130,7 +130,6 @@ public class CarScript : MonoBehaviour
 					state = eState.TOGROUND;
 					return;
 				}
-				prevpos = transform.position;
 				speed.y += gravity * Time.deltaTime;
 				transform.position += speed * Time.deltaTime;
 				break;
@@ -149,7 +148,6 @@ public class CarScript : MonoBehaviour
 			shakeTimer -= Time.deltaTime;
 			if (shakeTimer <= 0f)
 			{
-				CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 				noise.m_AmplitudeGain = 0f;
 			}
 		}
@@ -165,6 +163,8 @@ public class CarScript : MonoBehaviour
 		}
 
 		vehicleAudio.pitch = speed.magnitude / 30;
+
+		CheckSideCollisions();
 	}
 
 	private void LateUpdate()
@@ -179,14 +179,14 @@ public class CarScript : MonoBehaviour
 				return;
 			}
 		}
-		if (state == eState.GROUNDED)
-		{
-			if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
-			{
-				SnapToGround(ray2);
-				return;
-			}
-		}
+		//if (state == eState.GROUNDED)
+		//{
+		//	if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray2, groundLM))
+		//	{
+		//		SnapToGround(ray2);
+		//		return;
+		//	}
+		//}
 	}
 
 	private void MoveCarForward()
@@ -216,8 +216,7 @@ public class CarScript : MonoBehaviour
 				if (hit.TryGetComponent<BloodGiver>(out BloodGiver bg))
 				{
 					bg.Killed();
-					CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-					noise.m_AmplitudeGain = 5f;
+					noise.m_AmplitudeGain = 10f;
 					shakeTimer = 0.25f;
 				}
 			}
@@ -232,35 +231,58 @@ public class CarScript : MonoBehaviour
 
 	private void CheckSideCollisions()
 	{
-		if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray, wallLM))
+		if (Physics.Linecast(prevpos, transform.position + transform.forward, out RaycastHit ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
-			transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.08f;
+				howIAmTurning = howIAmTurning + UnityEngine.Random.Range(-15f, 15f);
+				transform.Rotate(transform.up, howIAmTurning, Space.World);
+			} else
+			{
+				transform.rotation = Quaternion.LookRotation(ray.normal, transform.up);
+			}
 			speed.z *= 0.5f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+
 		}
 		if (Physics.Raycast(transform.position, transform.right, out ray, 0.5f, wallLM))
 		{
-			howIAmTurning = -MathF.Abs(howIAmTurning) - 25f;
+			howIAmTurning = -MathF.Abs(howIAmTurning) - 15f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			transform.position += ray.normal;
+			//transform.position += ray.normal;
 			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.03f;
+			}
 		} 
 		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
 		{
-			howIAmTurning = MathF.Abs(howIAmTurning) + 25f;
+			howIAmTurning = MathF.Abs(howIAmTurning) + 15f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			transform.position += ray.normal;
+			//transform.position += ray.normal;
 			speed.z *= 0.8f;
+			noise.m_AmplitudeGain = 10f;
+			shakeTimer = 0.25f;
+			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
+			{
+				BloodAmount -= 0.03f;
+			}
 		}
 	}
 
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
-		Gizmos.DrawLine(transform.position, transform.position + ((transform.right * (howIAmTurning / 90)) + (transform.forward * speed.z)));
-		Gizmos.DrawLine(transform.position, transform.position + (speed.normalized * 5f));
-		Gizmos.DrawSphere(transform.position, attackRange);
+		//Gizmos.DrawLine(transform.position, transform.position + ((transform.right * (howIAmTurning / 90)) + (transform.forward * speed.z)));
+		Gizmos.DrawLine(prevpos,transform.position + transform.forward);
+		//Gizmos.DrawSphere(transform.position, attackRange);
 	}
 
 	private void TurnCar()
@@ -339,7 +361,6 @@ public class CarScript : MonoBehaviour
 		// this works thank you google lol
 		//https://discussions.unity.com/t/character-up-vector-to-align-with-normal/119153
 		transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-		prevpos = transform.position;
 	}
 
 	private void SpintAttack()

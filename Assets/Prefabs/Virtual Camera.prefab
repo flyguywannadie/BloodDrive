@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 6481965732135053055}
   - component: {fileID: 2590346556029369201}
   - component: {fileID: 1174138627203641844}
+  - component: {fileID: 1333558462968496603}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -168,6 +169,23 @@ MonoBehaviour:
   m_YawDamping: 1
   m_RollDamping: 1
   m_AngularDamping: 1
+--- !u!114 &1333558462968496603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096250220948090265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 10
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &8817242166425898433
 GameObject:
   m_ObjectHideFlags: 0

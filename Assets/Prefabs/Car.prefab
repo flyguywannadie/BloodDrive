@@ -5021,9 +5021,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 21740e5e4181d204c90ac4a7ccc4b27d, type: 3}
   - {fileID: 21300000, guid: 7b74028ffef7f234f9d3330074312da5, type: 3}
   - {fileID: 21300000, guid: 5d667bb4f41eeac42a8065591436540b, type: 3}
+  virtualCamera: {fileID: 0}
   driftSparks: {fileID: 5511670343129455622}
   BloodAmount: 1
-  howLongToRunOutOfBlood: 3821380
+  howLongToRunOutOfBlood: 200
   bloodGottenFromGiver: 0.15
   attackRange: 4
   vehicleAudio: {fileID: -6680202309848366457}
