@@ -72,7 +72,7 @@ public class CarScript : MonoBehaviour
 	private IEnumerator DeathCountdown()
 	{
 		yield return new WaitForSeconds(1);
-		if (GetSpeed() < 50)
+		if (GetSpeed() < 40)
 		{
 			if (secondsTillDie > 0)
 			{
