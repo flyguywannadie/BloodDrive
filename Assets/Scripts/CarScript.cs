@@ -233,7 +233,7 @@ public class CarScript : MonoBehaviour
 		{
 			howIAmTurning = -15f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			//transform.position += ray.normal;
+			transform.position += ray.normal;
 			speed.z *= 0.8f;
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
@@ -246,7 +246,7 @@ public class CarScript : MonoBehaviour
 		{
 			howIAmTurning = 15f;
 			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			//transform.position += ray.normal;
+			transform.position += ray.normal;
 			speed.z *= 0.8f;
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
