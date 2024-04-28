@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+		float variance = UnityEngine.Random.Range(-10f, 10f);
+		speed = (Mathf.Sign(UnityEngine.Random.Range(-1f, 1f)) * speed) + variance;
+		distance = UnityEngine.Random.Range(0, length);
 		StartCoroutine(SwapLanesCoroutine());
 	}
 

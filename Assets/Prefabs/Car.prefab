@@ -5023,7 +5023,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5d667bb4f41eeac42a8065591436540b, type: 3}
   driftSparks: {fileID: 5511670343129455622}
   BloodAmount: 1
-  howLongToRunOutOfBlood: 20
+  howLongToRunOutOfBlood: 3821380
   bloodGottenFromGiver: 0.15
   attackRange: 4
   vehicleAudio: {fileID: -6680202309848366457}
@@ -5042,7 +5042,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5416,3 +5416,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedText: {fileID: 0}
+  carScript: {fileID: 0}
