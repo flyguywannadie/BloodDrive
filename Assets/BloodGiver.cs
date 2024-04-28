@@ -11,6 +11,7 @@ public class BloodGiver : MonoBehaviour
 	private void Start()
 	{
 		player = FindObjectOfType<CarScript>();
+		Random.Range(0, 10);
 	}
 
 	public void Killed()

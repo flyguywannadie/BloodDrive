@@ -21,8 +21,8 @@ public class Billboard : MonoBehaviour
     {
         if (upcompare)
         {
-			//transform.LookAt(camtolookat.transform, upcompare.up);
-            transform.rotation = Quaternion.LookRotation(-upcompare.forward);
+			transform.LookAt(camtolookat.transform, upcompare.up);
+            //transform.rotation = Quaternion.LookRotation(-upcompare.forward);
 		} else
         {
 			transform.rotation = Quaternion.LookRotation(-camtolookat.transform.forward);
