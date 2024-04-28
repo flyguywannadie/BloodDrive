@@ -68,6 +68,13 @@ public class CarScript : MonoBehaviour
 
 				MoveCarForward();
 
+				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
+				{
+					Debug.Log("YOU PASSED THROUGH THE GROUND");
+					//Destroy(gameObject);
+					SnapToGround(ray3);
+				}
+
 				CheckSideCollisions();
 
 				TurnCar();
@@ -232,6 +239,7 @@ public class CarScript : MonoBehaviour
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawLine(transform.position, transform.position + ((transform.right * (howIAmTurning / 90)) + (transform.forward * speed.z)));
+		Gizmos.DrawLine(transform.position, transform.position + (speed.normalized * 5f));
 		Gizmos.DrawSphere(transform.position, attackRange);
 	}
 
