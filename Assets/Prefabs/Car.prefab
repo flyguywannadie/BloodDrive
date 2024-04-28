@@ -5012,7 +5012,7 @@ MonoBehaviour:
     m_Bits: 64
   wallLM:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   carAnimator: {fileID: 1983512292932590272}
   carSprite: {fileID: 5466079916513490436}
   turningSprites:
@@ -5024,8 +5024,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   driftSparks: {fileID: 5511670343129455622}
   BloodAmount: 1
-  howLongToRunOutOfBlood: 200
-  bloodGottenFromGiver: 0.15
+  howLongToRunOutOfBlood: 150
   attackRange: 4
   vehicleAudio: {fileID: -6680202309848366457}
   driftAudio: {fileID: -1345499109384685952}
@@ -5432,5 +5431,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eeec374b236d64c80fbf06fc37762a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   racePoints: []
-  lapText: {fileID: 0}

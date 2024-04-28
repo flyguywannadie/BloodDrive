@@ -333,7 +333,7 @@ public class CarScript : MonoBehaviour
 		{
 			spriteIndex = turningSprites.Length - 1;
 		}
-		Debug.Log(spriteIndex);
+		//Debug.Log(spriteIndex);
 		if (spriteIndex != 0)
 		{
 			if (howIAmTurning < 0)
@@ -384,6 +384,11 @@ public class CarScript : MonoBehaviour
 		{
 			return speed.magnitude;
 		}
+	}
+
+	public float GetTurn()
+	{
+		return howIAmTurning;
 	}
 
 	public float GetMaxSpeed()
