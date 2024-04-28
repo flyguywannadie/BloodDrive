@@ -11,11 +11,12 @@ public class EnemySpawner : MonoBehaviour
 {
 	[SerializeField] SplineContainer[] splines;
     [SerializeField] GameObject[] enemyType;
-    [SerializeField] Transform[] spawnPositions;
 	[SerializeField] CarScript player;
 
-	[SerializeField] int spawnMin;
-    [SerializeField] int spawnMax;
+	[SerializeField] public int spawnMin;
+    [SerializeField] public int spawnMax;
+	[SerializeField] public float spawnTimeMin = 0.5f;
+	[SerializeField] public float spawnTimeMax = 1f;
 
     int enemyCount;
 
@@ -68,8 +69,8 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.position = position;
 
 		if (currentEnemy != enemyCount)
-        {
-			yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
+		{
+			yield return new WaitForSeconds(UnityEngine.Random.Range(spawnTimeMin, spawnTimeMax));
 			StartCoroutine(spawnCoroutine(currentEnemy + 1));
 		}
 	}

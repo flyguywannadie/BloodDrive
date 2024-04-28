@@ -1057,13 +1057,18 @@ MonoBehaviour:
   - {fileID: 1139470180}
   enemyType:
   - {fileID: 3323660903430261232, guid: fb87fc9855482d84d975bd62f3c7f980, type: 3}
+  - {fileID: 3323660903430261232, guid: 56218a404460b5a4c90f7d4928809822, type: 3}
+  - {fileID: 3323660903430261232, guid: cc3367e74c7bbce4b9615998554a4f9e, type: 3}
+  - {fileID: 3323660903430261232, guid: 8f5a4b87b34f1494385a3792bcc48fbe, type: 3}
   spawnPositions:
   - {fileID: 873754107}
   - {fileID: 926167896}
   - {fileID: 2086368181}
-  player: {fileID: 0}
+  player: {fileID: 777055780}
   spawnMin: 5
   spawnMax: 10
+  spawnTimeMin: 0.5
+  spawnTimeMax: 1
 --- !u!1 &584631907
 GameObject:
   m_ObjectHideFlags: 0

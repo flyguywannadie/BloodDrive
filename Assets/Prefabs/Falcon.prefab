@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 475313761743066744}
   - component: {fileID: 1423765963525015345}
   m_Layer: 9
-  m_Name: TestBloodGiver
+  m_Name: Falcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   player: {fileID: 0}
   particleffectprefab:
   - {fileID: 158339060008303717, guid: d57eb8d21b635664b90df4508f1e142f, type: 3}
-  amountToGive: 0.08
-  bloodDamage: 0.1
+  amountToGive: 0.15
+  bloodDamage: 0.05
 --- !u!54 &475313761743066744
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splinetofollow: []
   currentLane: 0
-  speed: 30
+  speed: 60
   tdistance: 0
 --- !u!1 &6509049697249951052
 GameObject:
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a15a89ba94845d74f989449196b3f265, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14154891e1ac6164d80e9266c9a7cc0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -269,10 +269,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forward: {fileID: 2159614855561001752}
   sprites:
-  - {fileID: 21300000, guid: a15a89ba94845d74f989449196b3f265, type: 3}
-  - {fileID: 21300000, guid: 4b0cad72e1487d345b1f43576d497304, type: 3}
-  - {fileID: 21300000, guid: e9d9a686e780d4e45a94b677a234a145, type: 3}
-  - {fileID: 21300000, guid: 69dac2d6fa0eb5f419efe2507bedb93c, type: 3}
+  - {fileID: 21300000, guid: 14154891e1ac6164d80e9266c9a7cc0e, type: 3}
+  - {fileID: 21300000, guid: c60f35d031d805e41910823675139137, type: 3}
+  - {fileID: 21300000, guid: ed9ab37ba47d7894c9ff1f6f161f6c9e, type: 3}
+  - {fileID: 21300000, guid: a533bd79161284b48b40fb6f8b07f0ac, type: 3}
   spriterend: {fileID: 808895444756709929}
 --- !u!114 &2262758475025306007
 MonoBehaviour:
