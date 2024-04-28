@@ -57,6 +57,8 @@ public class CarScript : MonoBehaviour
 
 	[SerializeField] SuperTextMesh deathcd;
 
+	[SerializeField] GameManager gameManager;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -98,6 +100,7 @@ public class CarScript : MonoBehaviour
 		Instantiate(deathPrefab, transform.position, transform.rotation);
 
 		// tell gamemanager to gameover
+		gameManager.OnGameOver();
 
 		Destroy(gameObject);
 	}
