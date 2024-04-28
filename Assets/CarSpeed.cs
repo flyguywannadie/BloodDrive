@@ -7,14 +7,11 @@ using UnityEngine.UIElements;
 public class CarSpeed : MonoBehaviour
 {
 	[SerializeField] TMP_Text speedText;
-	Vector3 lastPosition = Vector3.zero;
-	float speed;
+	[SerializeField] CarScript carScript;
+
+	//Vector3 lastPosition = Vector3.zero;
+	//float speed;
 	int frames = 0;
-
-	private void Start()
-	{
-
-	}
 
 	void FixedUpdate()
     {
@@ -22,10 +19,10 @@ public class CarSpeed : MonoBehaviour
 
 		if (frames == 3)
 		{
-			speed = Vector3.Distance(lastPosition, transform.position) * 100f;
-			lastPosition = transform.position;
+			//speed = Vector3.Distance(lastPosition, transform.position) * 100f;
+			//lastPosition = transform.position;
 
-			speedText.text = speed.ToString("0") + " MPH";
+			speedText.text = carScript.GetSpeed().ToString("0") + " MPH";
 
 			frames = 0;
 		}
