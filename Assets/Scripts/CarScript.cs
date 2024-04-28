@@ -49,6 +49,12 @@ public class CarScript : MonoBehaviour
 
 	CinemachineBasicMultiChannelPerlin noise;
 
+	[SerializeField] float secondsTillDie= 9;
+	[SerializeField] float deathDelay= 15;
+	[SerializeField] bool markedForDeath = false;
+
+	[SerializeField] GameObject deathPrefab;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -59,7 +65,30 @@ public class CarScript : MonoBehaviour
 
 		noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 		noise.m_AmplitudeGain = 0f;
+	}
 
+	private IEnumerator DeathCountdown()
+	{
+		yield return new WaitForSeconds(1);
+		if (GetSpeed() < 50)
+		{
+			if (secondsTillDie > 0)
+			{
+				secondsTillDie--;
+				StartCoroutine(DeathCountdown());
+			} else
+			{
+				Instantiate(deathPrefab, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
+				
+				// tell gamemanager to gameover
+
+				Destroy(gameObject);
+			}
+		} else
+		{
+			secondsTillDie = 9;
+			StartCoroutine(DeathCountdown());
+		}
 	}
 
     // Update is called once per frame
@@ -67,6 +96,16 @@ public class CarScript : MonoBehaviour
     {
 		//Debug.Log(state.ToString());
 		maxSpeed = maxSpeedBlood * BloodAmount;
+
+		if (!markedForDeath)
+		{
+			deathDelay -= Time.deltaTime;
+			if (deathDelay <= 0)
+			{
+				markedForDeath = true;
+				StartCoroutine(DeathCountdown());
+			}
+		}
 
         switch (state)
         {
