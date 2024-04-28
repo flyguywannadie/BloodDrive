@@ -8,12 +8,12 @@ using UnityEngine.Splines;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] public List<SplineContainer> splinetofollow;
+    [SerializeField] public SplineContainer splinetofollow;
 	[SerializeField] public int currentLane = 0;
 	public float speed = 1;
 	[Range(0, 1)] public float tdistance = 0;
 
-	public float length { get { return splinetofollow[currentLane].CalculateLength(); } }
+	public float length { get { return splinetofollow.CalculateLength(); } }
 	public float distance { get { return tdistance * length; } set { tdistance = value / length; } }
 
 	// Start is called before the first frame update
@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     {
 		distance += speed * Time.deltaTime;
 		UpdateTransform(math.frac(tdistance));
+
 		if (tdistance >= 1)
 		{
 			tdistance = 0;
@@ -39,23 +40,16 @@ public class EnemyAI : MonoBehaviour
 	void UpdateTransform(float t)
 	{
 		Vector3 position = splinetofollow[currentLane].EvaluatePosition(t);
-		Vector3 up = splinetofollow[currentLane].EvaluateUpVector(t);
+		//Vector3 up = splinetofollow[currentLane].EvaluateUpVector(t);
 		Vector3 forward = Vector3.Normalize(splinetofollow[currentLane].EvaluateTangent(t));
-		Vector3 right = Vector3.Cross(up, forward);
 
 		if (speed < 0)
 		{
 			forward *= -1;
 		}
 
-		transform.position = Vector3.Lerp(transform.position, position, 3 * Time.deltaTime);
-		transform.rotation = Quaternion.LookRotation(forward, up);
+		transform.position = position;
+		transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
 	}
 
-	private IEnumerator SwapLanesCoroutine()
-	{
-		currentLane = UnityEngine.Random.Range(0, splinetofollow.Count);
-		yield return new WaitForSeconds(UnityEngine.Random.Range(3, 10));
-		StartCoroutine(SwapLanesCoroutine());
-	}
 }

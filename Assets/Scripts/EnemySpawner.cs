@@ -49,23 +49,14 @@ public class EnemySpawner : MonoBehaviour
 		var enemyScript = enemy.GetComponent<EnemyAI>();
 
 		//set splines they are assigned to
-        for (int j = 0; j < splines.Count(); j++)
-        {
-            randomIndex = UnityEngine.Random.Range(0, 2);
-			if (randomIndex == 1)
-            {
-				enemyScript.splinetofollow.Add(splines[j]);
-			}
-		}
 
-        if(enemyScript.splinetofollow.Count() == 0)
-        {
-			enemyScript.splinetofollow.Add(splines[0]);
-		}
+        randomIndex = UnityEngine.Random.Range(0, splines.Count());
+		enemyScript.splinetofollow = splines[randomIndex];
+
 
 		enemyScript.distance = UnityEngine.Random.Range(0, enemyScript.length); //set random distance
 
-		Vector3 position = enemyScript.splinetofollow[enemyScript.currentLane].EvaluatePosition(math.frac(enemyScript.tdistance));
+		Vector3 position = enemyScript.splinetofollow.EvaluatePosition(math.frac(enemyScript.tdistance));
         enemy.transform.position = position;
 
 		if (currentEnemy != enemyCount)

@@ -14,7 +14,9 @@ public class StartGame : MonoBehaviour
 
     public void OnButtonClick()
     {
-		SceneManager.LoadScene("MaxScene");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Destroy(MainMenu);
+        Destroy(LogoScreen);
 	}
 
     private void Start()
