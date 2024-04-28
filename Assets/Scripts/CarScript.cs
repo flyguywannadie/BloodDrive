@@ -95,7 +95,7 @@ public class CarScript : MonoBehaviour
 
 	public void Die()
 	{
-		Instantiate(deathPrefab, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
+		Instantiate(deathPrefab, transform.position, transform.rotation);
 
 		// tell gamemanager to gameover
 
@@ -168,7 +168,7 @@ public class CarScript : MonoBehaviour
 
 				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.forward, Vector3.up), Time.deltaTime);
 
-				if (Physics.Linecast(prevpos, transform.position + speed.normalized, out RaycastHit ray2, groundLM))
+				if (Physics.Linecast(prevpos, transform.position + (speed * Time.deltaTime), out RaycastHit ray2, groundLM))
 				{
 					transform.rotation = Quaternion.LookRotation(transform.forward, ray2.normal);
 					SnapToGround(ray2);
@@ -278,11 +278,11 @@ public class CarScript : MonoBehaviour
 
 	private void CheckSideCollisions()
 	{
-		if (Physics.Raycast(transform.position, transform.right, out RaycastHit ray, 0.5f, wallLM))
+		if (Physics.Raycast(transform.position, transform.right, out RaycastHit ray, 0.5f * Time.deltaTime, wallLM))
 		{
 			howIAmTurning = -15f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			transform.position += ray.normal;
+			transform.Rotate(transform.up, howIAmTurning);
+			transform.position -= transform.right;
 			speed.z *= 0.8f;
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
@@ -290,12 +290,12 @@ public class CarScript : MonoBehaviour
 			{
 				BloodAmount -= bg.bloodDamage;
 			}
-		} else
-		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f, wallLM))
+		} 
+		if (Physics.Raycast(transform.position, -transform.right, out ray, 0.5f * Time.deltaTime, wallLM))
 		{
 			howIAmTurning = 15f;
-			transform.Rotate(transform.up, howIAmTurning, Space.World);
-			transform.position += ray.normal;
+			transform.Rotate(transform.up, howIAmTurning);
+			transform.position += transform.right;
 			speed.z *= 0.8f;
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
@@ -303,8 +303,8 @@ public class CarScript : MonoBehaviour
 			{
 				BloodAmount -= bg.bloodDamage;
 			}
-		} else
-		if (Physics.Linecast(prevpos, transform.position + transform.forward, out ray, wallLM))
+		}
+		if (Physics.Linecast(prevpos, transform.position + (transform.forward * GetSpeed() * Time.deltaTime), out ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
@@ -316,12 +316,12 @@ public class CarScript : MonoBehaviour
 			}
 			else
 			{
+				transform.position -= transform.forward;
 				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(ray.normal, transform.up), 0.5f);
 			}
 			speed.z *= 0.5f;
 			noise.m_AmplitudeGain = 10f;
 			shakeTimer = 0.25f;
-
 		}
 	}
 
