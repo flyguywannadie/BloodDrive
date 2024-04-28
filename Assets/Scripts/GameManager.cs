@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     int currentLap = 1;
-	[SerializeField] TMP_Text lapText;
+	[SerializeField] SuperTextMesh lapText;
     [SerializeField] EnemySpawner spawner;
 
 	void Start()
