@@ -39,9 +39,9 @@ public class EnemyAI : MonoBehaviour
 
 	void UpdateTransform(float t)
 	{
-		Vector3 position = splinetofollow[currentLane].EvaluatePosition(t);
+		Vector3 position = splinetofollow.EvaluatePosition(t);
 		//Vector3 up = splinetofollow[currentLane].EvaluateUpVector(t);
-		Vector3 forward = Vector3.Normalize(splinetofollow[currentLane].EvaluateTangent(t));
+		Vector3 forward = Vector3.Normalize(splinetofollow.EvaluateTangent(t));
 
 		if (speed < 0)
 		{
