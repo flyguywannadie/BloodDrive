@@ -686,6 +686,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 584631908}
   m_LocalEulerAnglesHint: {x: -16.802, y: -14.071, z: -14.626}
+--- !u!1 &508343408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508343409}
+  - component: {fileID: 508343410}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508343409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508343408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &508343410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508343408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28eeb36fb458e9489fb5e7f6caadad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lapText: {fileID: 1820975877}
 --- !u!1 &584631907
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +951,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6266928144144960710, guid: d58a0a8b8179f06488d6b3f19369812a,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 508343410}
+    - target: {fileID: 6266928144144960710, guid: d58a0a8b8179f06488d6b3f19369812a,
+        type: 3}
+      propertyPath: racePoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266928144144960710, guid: d58a0a8b8179f06488d6b3f19369812a,
+        type: 3}
+      propertyPath: racePoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1348440899}
+    - target: {fileID: 6266928144144960710, guid: d58a0a8b8179f06488d6b3f19369812a,
+        type: 3}
+      propertyPath: racePoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1791922149}
+    - target: {fileID: 6266928144144960710, guid: d58a0a8b8179f06488d6b3f19369812a,
+        type: 3}
+      propertyPath: racePoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1805874890}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2894,3 +2964,4 @@ SceneRoots:
   - {fileID: 1546700095}
   - {fileID: 846117732}
   - {fileID: 64828375}
+  - {fileID: 508343409}

@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class RaceProgress : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
     [SerializeField] List<GameObject> racePoints;
-    [SerializeField] TMP_Text lapText;
     int currentPoint = 0;
-    int currentLap = 1;
 
     void Start()
     {
@@ -27,8 +26,7 @@ public class RaceProgress : MonoBehaviour
             if(currentPoint == racePoints.Count)
             {
                 currentPoint = 0;
-                currentLap++;
-                lapText.text = "Lap " + currentLap.ToString();
+                gameManager.OnLapChange();
             }
 
 			racePoints[currentPoint].SetActive(true);
