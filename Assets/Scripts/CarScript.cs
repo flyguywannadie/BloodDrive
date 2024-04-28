@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ public class CarScript : MonoBehaviour
 	[SerializeField] SpriteRenderer carSprite;
 	[SerializeField] Sprite[] turningSprites;
 
+	[SerializeField] CinemachineVirtualCamera virtualCamera;
+	float shakeTimer = 0;
+
 	[SerializeField] ParticleSystem driftSparks;
 
 	[SerializeField, Range(0f, 1f)] float BloodAmount = 1f;
@@ -51,6 +55,9 @@ public class CarScript : MonoBehaviour
         originalMaxSpeed = maxSpeedBlood;
 		prevpos = transform.position;
 		PlayIntro();
+
+		CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+		noise.m_AmplitudeGain = 0f;
 
 	}
 
@@ -137,6 +144,16 @@ public class CarScript : MonoBehaviour
 				break;
         }
 
+		if (shakeTimer > 0)
+		{
+			shakeTimer -= Time.deltaTime;
+			if (shakeTimer <= 0f)
+			{
+				CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+				noise.m_AmplitudeGain = 0f;
+			}
+		}
+
 		if (!carAnimator.isActiveAndEnabled)
 		{
 			SelectCarSprite();
@@ -199,6 +216,9 @@ public class CarScript : MonoBehaviour
 				if (hit.TryGetComponent<BloodGiver>(out BloodGiver bg))
 				{
 					bg.Killed();
+					CinemachineBasicMultiChannelPerlin noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+					noise.m_AmplitudeGain = 5f;
+					shakeTimer = 0.25f;
 				}
 			}
 			yield return new WaitForFixedUpdate();
