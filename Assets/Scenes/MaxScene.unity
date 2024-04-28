@@ -4024,6 +4024,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2262758475025306007, guid: fb87fc9855482d84d975bd62f3c7f980,
+        type: 3}
+      propertyPath: camtolookat
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 3323660903430261232, guid: fb87fc9855482d84d975bd62f3c7f980,
         type: 3}
       propertyPath: m_Name

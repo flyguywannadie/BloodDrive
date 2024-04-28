@@ -44,6 +44,11 @@ public class EnemyAI : MonoBehaviour
 		Vector3 forward = Vector3.Normalize(splinetofollow[currentLane].EvaluateTangent(t));
 		Vector3 right = Vector3.Cross(up, forward);
 
+		if (speed < 0)
+		{
+			forward *= -1;
+		}
+
 		transform.position = Vector3.Lerp(transform.position, position, 3 * Time.deltaTime);
 		transform.rotation = Quaternion.LookRotation(forward, up);
 	}

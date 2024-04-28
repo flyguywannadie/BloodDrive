@@ -66,27 +66,12 @@ public class CarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Debug.Log(state.ToString());
-		prevpos = transform.position;
+		//Debug.Log(state.ToString());
 		maxSpeed = maxSpeedBlood * BloodAmount;
 
         switch (state)
         {
             case eState.GROUNDED:
-				MoveCarForward();
-
-				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
-				{
-					Debug.Log("YOU PASSED THROUGH THE GROUND");
-					//Destroy(gameObject);
-					SnapToGround(ray3);
-				}
-
-
-
-				TurnCar();
-
-				//model.localRotation = Quaternion.Euler(0, 0, -howIAmTurning);
 
 				if (Physics.Raycast(transform.position, -transform.up, out RaycastHit ray, floatingHeight * 2, groundLM))
 				{
@@ -96,6 +81,17 @@ public class CarScript : MonoBehaviour
 				{
 					state = eState.TOINAIR;
 					return;
+				}
+
+				MoveCarForward();
+
+				TurnCar();
+
+				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
+				{
+					Debug.Log("YOU PASSED THROUGH THE GROUND");
+					//Destroy(gameObject);
+					SnapToGround(ray3);
 				}
 
 				if (!carAnimator.isActiveAndEnabled && Input.GetKeyDown(KeyCode.Space))
@@ -134,6 +130,8 @@ public class CarScript : MonoBehaviour
 				transform.position += speed * Time.deltaTime;
 				break;
             case eState.TOINAIR:
+				Debug.Log("To In AIR");
+				MoveCarForward();
 				float speedMagnitude = speed.magnitude;
                 speed = transform.position - prevpos;
                 speed = speed.normalized * speedMagnitude;
@@ -163,8 +161,8 @@ public class CarScript : MonoBehaviour
 		}
 
 		vehicleAudio.pitch = speed.magnitude / 30;
-
 		CheckSideCollisions();
+		prevpos = transform.position;
 	}
 
 	private void LateUpdate()
