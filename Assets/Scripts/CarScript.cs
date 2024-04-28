@@ -278,7 +278,7 @@ public class CarScript : MonoBehaviour
 
 	private void CheckSideCollisions()
 	{
-		if (Physics.Raycast(transform.position - (transform.up * floatingHeight), transform.right, out RaycastHit ray, 0.5f * Time.deltaTime, wallLM))
+		if (Physics.Raycast(transform.position - (transform.up * floatingHeight * 0.9f), transform.right, out RaycastHit ray, 0.5f * Time.deltaTime, wallLM))
 		{
 			howIAmTurning = -15f;
 			transform.Rotate(transform.up, howIAmTurning);
@@ -291,7 +291,7 @@ public class CarScript : MonoBehaviour
 				BloodAmount -= bg.bloodDamage;
 			}
 		} 
-		if (Physics.Raycast(transform.position - (transform.up * floatingHeight), -transform.right, out ray, 0.5f * Time.deltaTime, wallLM))
+		if (Physics.Raycast(transform.position - (transform.up * floatingHeight * 0.9f), -transform.right, out ray, 0.5f * Time.deltaTime, wallLM))
 		{
 			howIAmTurning = 15f;
 			transform.Rotate(transform.up, howIAmTurning);
@@ -304,7 +304,7 @@ public class CarScript : MonoBehaviour
 				BloodAmount -= bg.bloodDamage;
 			}
 		}
-		if (Physics.Linecast(prevpos - (transform.up * floatingHeight), transform.position + (transform.forward * GetSpeed() * Time.deltaTime), out ray, wallLM))
+		if (Physics.Linecast(prevpos - (transform.up * floatingHeight * 0.9f), transform.position + (transform.forward * GetSpeed() * Time.deltaTime), out ray, wallLM))
 		{
 			Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
