@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.UIElements;
+using static UnityEditor.UIElements.ToolbarMenu;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -53,7 +54,8 @@ public class EnemySpawner : MonoBehaviour
         randomIndex = UnityEngine.Random.Range(0, splines.Count());
 		enemyScript.splinetofollow = splines[randomIndex];
 
-
+		float variance = UnityEngine.Random.Range(-10f, 10f);
+		enemyScript.speed = (Mathf.Sign(UnityEngine.Random.Range(-1f, 1f)) * enemyScript.speed) + variance;
 		enemyScript.distance = UnityEngine.Random.Range(0, enemyScript.length); //set random distance
 
 		Vector3 position = enemyScript.splinetofollow.EvaluatePosition(math.frac(enemyScript.tdistance));
