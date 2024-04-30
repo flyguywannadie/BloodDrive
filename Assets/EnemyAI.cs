@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -28,7 +27,7 @@ public class EnemyAI : MonoBehaviour
 	void Update()
     {
 		distance += speed * Time.deltaTime;
-		UpdateTransform(math.frac(tdistance));
+		UpdateTransform(tdistance - Mathf.Floor(tdistance));
 
 		if (tdistance >= 1)
 		{
@@ -40,7 +39,7 @@ public class EnemyAI : MonoBehaviour
 	void UpdateTransform(float t)
 	{
 		Vector3 position = splinetofollow.EvaluatePosition(t);
-		//Vector3 up = splinetofollow[currentLane].EvaluateUpVector(t);
+		Vector3 up = splinetofollow[currentLane].EvaluateUpVector(t);
 		Vector3 forward = Vector3.Normalize(splinetofollow.EvaluateTangent(t));
 
 		if (speed < 0)
@@ -49,7 +48,7 @@ public class EnemyAI : MonoBehaviour
 		}
 
 		transform.position = position;
-		transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+		transform.rotation = Quaternion.LookRotation(forward, up);
 	}
 
 }
