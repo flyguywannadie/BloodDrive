@@ -35,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
 		//get number range between min and max for number of enemies spawned
 		enemyCount =Random.Range(spawnMin, spawnMax);
 
+		if (enemyCount == 0) return;
 		StartCoroutine(spawnCoroutine(0));
     }
 
