@@ -141,7 +141,7 @@ public class CarScript : MonoBehaviour
 
 				if (Physics.Linecast(prevpos, transform.position, out RaycastHit ray3, groundLM))
 				{
-					Debug.Log("YOU PASSED THROUGH THE GROUND");
+					//Debug.Log("YOU PASSED THROUGH THE GROUND");
 					//Destroy(gameObject);
 					SnapToGround(ray3);
 				}
@@ -152,7 +152,7 @@ public class CarScript : MonoBehaviour
 				}
 				break;
             case eState.TOGROUND:
-				Debug.Log("Float On ground NOW!!!");
+				//Debug.Log("Float On ground NOW!!!");
 				speed = new Vector3(speed.x, 0, speed.z);
 				float speed2 = speed.magnitude;
 				speed = new Vector3(0,0,speed2);
@@ -164,7 +164,7 @@ public class CarScript : MonoBehaviour
 				}
 				break;
             case eState.INAIR:
-				Debug.Log("GRAVITY IS A HARNESS");
+				//Debug.Log("GRAVITY IS A HARNESS");
 
 				//speed.z = Mathf.Lerp(speed.z, 0, 1f * Time.deltaTime);
 				//speed.x = Mathf.Lerp(speed.x, 0, 1f * Time.deltaTime);
@@ -182,7 +182,7 @@ public class CarScript : MonoBehaviour
 				transform.position += speed * Time.deltaTime;
 				break;
             case eState.TOINAIR:
-				Debug.Log("To In AIR");
+				//Debug.Log("To In AIR");
 				MoveCarForward();
 				float speedMagnitude = speed.magnitude;
                 speed = transform.position - prevpos;
@@ -283,7 +283,7 @@ public class CarScript : MonoBehaviour
 	{
 		if (Physics.Raycast(transform.position - (transform.up * floatingHeight * 0.9f), transform.right, out RaycastHit ray, 0.5f * Time.deltaTime, wallLM))
 		{
-			howIAmTurning = -15f;
+			howIAmTurning = -5f;
 			transform.Rotate(transform.up, howIAmTurning);
 			transform.position -= transform.right;
 			speed.z *= 0.8f;
@@ -296,7 +296,7 @@ public class CarScript : MonoBehaviour
 		} 
 		if (Physics.Raycast(transform.position - (transform.up * floatingHeight * 0.9f), -transform.right, out ray, 0.5f * Time.deltaTime, wallLM))
 		{
-			howIAmTurning = 15f;
+			howIAmTurning = 5f;
 			transform.Rotate(transform.up, howIAmTurning);
 			transform.position += transform.right;
 			speed.z *= 0.8f;
@@ -309,7 +309,7 @@ public class CarScript : MonoBehaviour
 		}
 		if (Physics.Linecast(prevpos - (transform.up * floatingHeight * 0.9f), transform.position + (transform.forward * GetSpeed() * Time.deltaTime), out ray, wallLM))
 		{
-			Debug.Log("YOU HAVE TO TURN");
+			//Debug.Log("YOU HAVE TO TURN");
 			//Destroy(gameObject);
 			if (ray.transform.TryGetComponent<BloodGiver>(out BloodGiver bg))
 			{
